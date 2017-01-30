@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" 
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	<definition name="baseLayout" template="/views/tiles/templates/baselayout.jsp">
+		<put-attribute name="title" value="MUMSched" />
+		<put-attribute name="css" value="/views/tiles/templates/js.jsp" />
+		<put-attribute name="js" value="/views/tiles/templates/css.jsp" />
+		<put-attribute name="heading" value="" />
+		<put-attribute name="tagline" value="" />
+		<put-attribute name="navigation" value="" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="" />
+	</definition>
+
+	<definition name="loginForm" extends="baseLayout">
+		<put-attribute name="navigation" value="/views/tiles/templates/top.jsp" />
+		<put-attribute name="body" value="/views/tiles/login.jsp" />
+		<put-attribute name="footer" value="/views/tiles/templates/bottom.jsp" />
+	</definition>
+
+	<definition name="home" extends="baseLayout">
+		<put-attribute name="navigation" value="/views/tiles/templates/top.jsp" />
+		<put-attribute name="body" value="/views/tiles/home.jsp" />
+		<put-attribute name="footer" value="/views/tiles/templates/bottom.jsp" />
+	</definition>
+
+	<definition name="courseAddForm" extends="baseLayout">
+		<put-attribute name="navigation" value="/views/tiles/templates/top.jsp" />
+		<put-attribute name="body" value="/views/tiles/addNewCourse.jsp" />
+		<put-attribute name="footer" value="/views/tiles/templates/bottom.jsp" />
+	</definition>
+
+	<definition name="courseEditForm" extends="baseLayout">
+		<put-attribute name="navigation" value="/views/tiles/templates/top.jsp" />
+		<put-attribute name="body" value="/views/tiles/courseformedit.jsp" />
+		<put-attribute name="footer" value="/views/tiles/templates/bottom.jsp" />
+	</definition>
+
+	<definition name="entryAddForm" extends="baseLayout">
+		<put-attribute name="navigation" value="/views/tiles/templates/top.jsp" />
+		<put-attribute name="body" value="/views/tiles/addNewEntry.jsp" />
+		<put-attribute name="footer" value="/views/tiles/templates/bottom.jsp" />
+	</definition>
+
+	<definition name="entryEditForm" extends="baseLayout">
+		<put-attribute name="navigation" value="/views/tiles/templates/top.jsp" />
+		<put-attribute name="body" value="/views/tiles/entryformedit.jsp" />
+		<put-attribute name="footer" value="/views/tiles/templates/bottom.jsp" />
+	</definition>
+
+</tiles-definitions>

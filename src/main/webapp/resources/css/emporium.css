@@ -1,0 +1,32 @@
+#formInput {
+	position: absolute;
+	top: 250px;
+	left:170px;
+	background-color: white;
+	width: 390px;
+	height: 290px;
+	padding-left: 10px;
+	z-index: 9002;
+	border-style: solid;
+	border-color: black;
+}
+
+.thumbnail {
+	width:60px;
+	height:90px;
+}
+
+.big-thumbnail {
+	width:200px;
+	height:300px;
+}
+
+#pagefooter{
+	margin-left:0;
+	margin-right:0;
+	padding:10;
+	height:150px;
+	width:100%;
+	background-color:#999;
+	color:#360;
+}
