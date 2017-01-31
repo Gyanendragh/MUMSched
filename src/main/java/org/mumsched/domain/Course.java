@@ -19,6 +19,22 @@ public class Course {
 	private String cname; //  imp note path at the jsp file must equivalent to this cname
 	@NotEmpty(message="no empty field accepted")
 	private String cnumber;
+	@NotEmpty(message="no empty field accepted")
+	private String prerequisites;
+	@NotEmpty(message="no empty field accepted")
+	private String faculty;
+	public String getPrerequisites() {
+		return prerequisites;
+	}
+	public void setPrerequisites(String prerequisites) {
+		this.prerequisites = prerequisites;
+	}
+	public String getFaculty() {
+		return faculty;
+	}
+	public void setFaculty(String faculty) {
+		this.faculty = faculty;
+	}
 	public Long getId() {
 		return id;
 	}

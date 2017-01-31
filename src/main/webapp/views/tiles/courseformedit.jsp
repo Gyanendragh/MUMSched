@@ -32,6 +32,25 @@ body {
 			<td><form:errors path="cnumber" cssStyle="color:red;"></form:errors>
 			</td>			
 		</tr>
+			<tr>
+			<td>Course Prerequisites</td>
+			<td><select name="prerequisites">
+					<option value="mpp"  <c:if test="${editCourse.prerequisites=='mpp'}">selected</c:if>>Modern Application Programming</option>
+					<option value="wap" <c:if test="${editCourse.prerequisites=='wap'}">selected</c:if>>Wave Application Programming</option>
+					<option value="dbms" <c:if test="${editCourse.prerequisites=='dbms'}">selected</c:if>>Database Management system</option>
+					<option value="swe" <c:if test="${editCourse.prerequisites=='swe'}">selected</c:if>>Software Engineer</option>
+			</select></td>			
+		</tr>
+			<tr>
+			<td>Faculty</td>
+			<td><select name="faculty">
+					<option value="nolle" <c:if test="${editCourse.faculty=='nolle'}">selected</c:if>>Prof. Nolle</option>
+					<option value="lerman" <c:if test="${editCourse.faculty=='lerman'}">selected</c:if>>Prof. Lerman</option>
+					<option value="saad" <c:if test="${editCourse.faculty=='saad'}">selected</c:if>>Prof Saad</option>
+					<option value="arrocha" <c:if test="${editCourse.faculty=='arrocha'}">selected</c:if>>Prof. Arrocha</option>
+					<option value="bruen" <c:if test="${editCourse.faculty=='bruen'}">selected</c:if>>Prof. Bruen</option>
+			</select></td>			
+		</tr>
 		<tr>
 			<td></td>
 			<td>
@@ -49,6 +68,8 @@ body {
 	<tr>
 		<td>Course Name</td>
 		<td>Course Number</td>
+		<td>Prerequisites</td>
+		<td>Faculty</td>
 		<td>&nbsp;</td>
 
 	</tr>
@@ -60,6 +81,10 @@ body {
 			<td>${course.cname}</td>
 
 			<td>${course.cnumber}</td>
+			
+			<td>${course.prerequisites}</td>
+
+			<td>${course.faculty}</td>
 
 			
 

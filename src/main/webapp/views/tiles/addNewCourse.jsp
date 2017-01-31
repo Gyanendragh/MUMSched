@@ -33,6 +33,25 @@ body {
 			</td>			
 		</tr>
 		<tr>
+			<td>Course Prerequisites</td>
+			<td><select name="prerequisites">
+					<option value="mpp">Modern Application Programming</option>
+					<option value="wap">Wave Application Programming</option>
+					<option value="dbms">Database Management system</option>
+					<option value="swe">Software Engineer</option>
+			</select></td>			
+		</tr>
+			<tr>
+			<td>Faculty</td>
+			<td><select name="faculty">
+					<option value="nolle">Prof. Nolle</option>
+					<option value="lerman">Prof. Lerman</option>
+					<option value="saad">Prof Saad</option>
+					<option value="arrocha">Prof. Arrocha</option>
+					<option value="bruen">Prof. Bruen</option>
+			</select></td>			
+		</tr>
+		<tr>
 			<td></td>
 			<td>
 				<button>Save</button>
@@ -49,6 +68,8 @@ body {
 	<tr>
 		<td>Course Name</td>
 		<td>Course Number</td>
+		<td>Prerequisites</td>
+		<td>Faculty</td>
 		<td>&nbsp;</td>
 
 	</tr>
@@ -61,6 +82,9 @@ body {
 
 			<td>${course.cnumber}</td>
 
+			<td>${course.prerequisites}</td>
+
+			<td>${course.faculty}</td>
 			
 
 
