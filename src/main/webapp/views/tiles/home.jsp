@@ -53,7 +53,7 @@
 							</form>
 						</li>
 						<li>
-							<form action="<spring:url value=""/>" method="get">
+							<form action="<spring:url value="/schedule/add"/>" method="get">
 								<input type="submit" value="Create Schedule" />
 							</form>
 						</li>
@@ -76,45 +76,44 @@
 								<li><form action="<spring:url value=""/>" method="get">
 										<input type="submit" value="CRUD Students" />
 									</form></li>
-							</ul>
-						</li>
+							</ul></li>
 					</ul>
-					</security:authorize>
-					</div>
-	
+				</security:authorize>
+			</div>
 
-	
 
-	<security:authorize access="hasRole('ROLE_STUDENT')">
-		<ul class="nav navbar-nav">
-			<li>
-				<form action="<spring:url value=""/>" method="get">
-					<input type="submit" value="View Schedule" />
-				</form>
-			</li>
-			<li>
-				<form action="<spring:url value=""/>" method="get">
-					<input type="submit" value="Register for a Section" />
-				</form>
-			</li>
-		</ul>
-	</security:authorize>
 
-	<security:authorize access="hasRole('ROLE_FACULTY')">
-		<ul class="nav navbar-nav">
-			<li>
-				<form action="<spring:url value=""/>" method="get">
-					<input type="submit" value="View Schedule" />
-				</form>
-			</li>
-			<li>
-				<form action="<spring:url value=""/>" method="get">
-					<input type="submit" value="View Profile" />
-				</form>
-			</li>
-		</ul>
-	</security:authorize>
-	</nav>
+
+			<security:authorize access="hasRole('ROLE_STUDENT')">
+				<ul class="nav navbar-nav">
+					<li>
+						<form action="<spring:url value=""/>" method="get">
+							<input type="submit" value="View Schedule" />
+						</form>
+					</li>
+					<li>
+						<form action="<spring:url value=""/>" method="get">
+							<input type="submit" value="Register for a Section" />
+						</form>
+					</li>
+				</ul>
+			</security:authorize>
+
+			<security:authorize access="hasRole('ROLE_FACULTY')">
+				<ul class="nav navbar-nav">
+					<li>
+						<form action="<spring:url value=""/>" method="get">
+							<input type="submit" value="View Schedule" />
+						</form>
+					</li>
+					<li>
+						<form action="<spring:url value=""/>" method="get">
+							<input type="submit" value="View Profile" />
+						</form>
+					</li>
+				</ul>
+			</security:authorize>
+		</nav>
 	</div>
 </body>
 </html>
