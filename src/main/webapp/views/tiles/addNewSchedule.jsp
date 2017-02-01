@@ -14,44 +14,52 @@ body {
 </style>
 </head>
 <body>
-
 	<jsp:include page='home.jsp'>
 		<jsp:param name="articleId" value="" />
 	</jsp:include>
 
-	<h1>Add New Schedule</h1>
-	<form:form modelAttribute="newSchedule" method="post">
+	<div class="panel panel-success">
+		<div class="panel-heading">Add New Schedule</div>
+		<div class="panel-body"></div>
+		<form:form modelAttribute="newSchedule" method="post">
+			<table class="table table-hover">
+				<tr>
+					<td><form:select path="name">
+							<form:option value="NONE" label="--- Select Entry ---" />
+							<form:options items="${entryList}" />
+						</form:select></td>
+					<td>
+						<button>Create Schedule</button>
+					</td>
+				</tr>
+			</table>
+		</form:form>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">Schedule List</div>
+		<div class="panel-body"></div>
 		<table class="table table-hover">
 			<tr>
-				<td><form:select path="name">
-						<form:option value="NONE" label="--- Select Entry ---" />
-						<form:options items="${entryList}" />
-					</form:select></td>
-			<td>
-				<button>Create Schedule</button>
-			</td>
+				<td>ID</td>
+				<td>NAME</td>
+				<td>ACTION</td>
 			</tr>
-		</table>
-	</form:form>
+			<c:forEach var="schedule" items="${scheduleList}">
+				<tbody>
+					<tr>
+						<td>${schedule.id}</td>
+						<td>${schedule.name}</td>
+						<td><a
+							href="<spring:url value="/schedule/view/${schedule.id}"/>">View</a>
+							| <a href="<spring:url value="/schedule/edit/${schedule.id}"/>">Edit</a>
+							| <a href="<spring:url value="/schedule/delete/${schedule.id}"/>">Delete</a>
 
-	<h1>Schedule List</h1>
-	<table class="table table-hover">
-		<tr>
-			<td>ID</td>
-			<td>NAME</td>
-			<td>ACTION</td>
-		</tr>
-		<c:forEach var="schedule" items="${scheduleList}">
-			<tbody>
-				<tr>
-					<td>${schedule.id}</td>
-					<td>${schedule.name}</td>
-					<td><a
-						href="<spring:url value="/schedule/edit/${schedule.id}"/>">Edit</a>
-						| <a href="<spring:url value="/schedule/delete/${schedule.id}"/>">Delete</a></td>
-				</tr>
-			</tbody>
-		</c:forEach>
-	</table>
+						</td>
+					</tr>
+				</tbody>
+			</c:forEach>
+		</table>
+	</div>
 </body>
 </html>

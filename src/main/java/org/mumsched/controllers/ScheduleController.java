@@ -50,5 +50,10 @@ public class ScheduleController {
 		scheduleService.delete(id);
 		return "redirect:/schedule/add";
 	}
+	
+	@RequestMapping(value="/view/{id}", method=RequestMethod.GET)
+	public String view(@PathVariable("id") Long id) {
+		return "viewSchedule";
+	}
 
 }
