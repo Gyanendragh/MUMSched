@@ -1,9 +1,15 @@
 package org.mumsched.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -14,26 +20,31 @@ public class Course {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
+	@Column(unique = true)
     @Size(min=2, max=30)
 	@NotEmpty(message="no empty field accepted")
 	private String cname; //  imp note path at the jsp file must equivalent to this cname
+	
+	@Column(unique = true)
 	@NotEmpty(message="no empty field accepted")
 	private String cnumber;
+	
 	@NotEmpty(message="no empty field accepted")
 	private String prerequisites;
+	
 	@NotEmpty(message="no empty field accepted")
-	private String faculty;
+	
+	@ManyToMany
+	private List<Faculty> facultyList = new ArrayList<>();
+	
+	@OneToMany(mappedBy="course")
+	private List<Section> section = new ArrayList<>();
+	
 	public String getPrerequisites() {
 		return prerequisites;
 	}
 	public void setPrerequisites(String prerequisites) {
 		this.prerequisites = prerequisites;
-	}
-	public String getFaculty() {
-		return faculty;
-	}
-	public void setFaculty(String faculty) {
-		this.faculty = faculty;
 	}
 	public Long getId() {
 		return id;
@@ -53,5 +64,5 @@ public class Course {
 	public void setCnumber(String cnumber) {
 		this.cnumber = cnumber;
 	}
-
+	
 }

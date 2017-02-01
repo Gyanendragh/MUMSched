@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.mumsched.domain.Schedule;
-import org.mumsched.service.ScheduleService;
 import org.mumsched.serviceimpl.ScheduleServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

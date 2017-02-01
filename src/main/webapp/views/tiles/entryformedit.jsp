@@ -35,11 +35,24 @@ body {
 		</tr>
 		<tr>
 		<tr>
-			<td>Number of Students </td>
-			<td><form:input path="nostudents" type="text" value="${editEntry.nostudents}"/></td>
-			<td><form:errors path="nostudents" cssStyle="color:red;"></form:errors>
+			<td>Number of FPP Students </td>
+			<td><form:input path="noOfFppStudents" type="text" value="${editEntry.noOfFppStudents}" /></td>
+			<td><form:errors path="noOfFppStudents" cssStyle="color:red;"></form:errors>
 			</td>			
 		</tr>
+		<tr>
+			<td>Number of  MPP Students </td>
+			<td><form:input path="noOfMppStudents" type="text" value="${editEntry.noOfMppStudents}"/></td>
+			<td><form:errors path="noOfMppStudents" cssStyle="color:red;"></form:errors>
+			</td>			
+		</tr>
+		<tr>
+			<td>Number of US Resident </td>
+			<td><form:input path="noOfUsResident" type="text" value="${editEntry.noOfUsResident}"/></td>
+			<td><form:errors path="noOfUsResident" cssStyle="color:red;"></form:errors>
+			</td>			
+		</tr>
+		<tr>
 			<td></td>
 			<td>
 				<button>Save</button>
@@ -56,7 +69,9 @@ body {
 	<tr>
 		<td>Entry Name</td>
 		<td>Entry Year</td>
-		<td>Number of Students</td>
+		<td>Number of FPP Students</td>
+		<td>Number of MPP Students</td>
+		<td>Number of US Resident</td>
 		<td>&nbsp;</td>
 
 	</tr>
@@ -69,7 +84,11 @@ body {
 			
 			<td>${entry.eyear}</td>
 
-			<td>${entry.nostudents}</td>
+			<td>${entry.noOfFppStudents}</td>
+			
+			<td>${entry.noOfMppStudents}</td>
+			
+			<td>${entry.noOfUsResident}</td>
 
 			
 
