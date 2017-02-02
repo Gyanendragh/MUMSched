@@ -1,7 +1,9 @@
 package org.mumsched.controllers;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mumsched.domain.Entry;
 import org.mumsched.domain.Schedule;
@@ -18,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping(value="/schedule")
+@RequestMapping(value = "/schedule")
 public class ScheduleController {
 	@Autowired
 	ScheduleServiceImpl scheduleService;
@@ -26,48 +28,69 @@ public class ScheduleController {
 	@Autowired
 	EntryServiceImpl entryService;
 
-	@RequestMapping(value={"/add"},method=RequestMethod.GET)
-	public String getForm(@ModelAttribute("newSchedule")Schedule schedule, Model model) {
+	@RequestMapping(value = { "/add" }, method = RequestMethod.GET)
+	public String getForm(@ModelAttribute("newSchedule") Schedule schedule, Model model) {
 		model.addAttribute("entryList", this.getEntryName());
+
+				List<Map<Long, String>> m = this.getEntryName();
+				for (Map<Long, String> m1 : m) {
+					for (Map.Entry<Long, String> entry : m1.entrySet()) {
+						long key = entry.getKey();
+						System.out.println(entry.getValue());
+					}
+				}
+
 		return "scheduleAddForm";
 	}
 
-	@RequestMapping(value={"/add"}, method=RequestMethod.POST)
-	public String save(@ModelAttribute("newSchedule") @Validated Schedule scheduleObj, BindingResult result, Model model ) {
-		if(result.hasErrors()) {
+	@RequestMapping(value = { "/add" }, method = RequestMethod.POST)
+	public String save(@ModelAttribute("newSchedule") @Validated Schedule scheduleObj, BindingResult result,
+			Model model) {
+		if (result.hasErrors()) {
 			return "scheduleAddForm";
 		} else {
 			scheduleService.save(scheduleObj);
-//			System.out.println("Schedule Name" + scheduleObj.getName());
-//			System.out.println("Schedule Id" + scheduleObj.getId());
-//			System.out.println("Entry ID" + scheduleObj);
-//			System.out.println("Saved");
+
+			System.out.println("Schedule Name" + scheduleObj.getName());
+			System.out.println("Schedule Id" + scheduleObj.getId());
+			System.out.println("Entry ID" + scheduleObj);
+			System.out.println("Saved");
 			return "redirect:/schedule/add";
 		}
 	}
 
-	@RequestMapping(value="/delete/{id}", method=RequestMethod.GET)
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String delete(@PathVariable("id") Long id) {
 		scheduleService.delete(id);
 		return "redirect:/schedule/add";
 	}
 
-	@RequestMapping(value="/view/{id}", method=RequestMethod.GET)
+	@RequestMapping(value = "/view/{id}", method = RequestMethod.GET)
 	public String view(@PathVariable("id") Long id) {
 		return "viewSchedule";
 	}
 
 	@ModelAttribute("scheduleList")
-	public List<Schedule> showList(){
-		List<Schedule> scheduleList=scheduleService.getAllSchedule();
+	public List<Schedule> showList() {
+		List<Schedule> scheduleList = scheduleService.getAllSchedule();
 		return scheduleList;
 	}
 
-
-	protected List<String> getEntryName() {
+	protected List<String> getEntryName1() {
 		List<String> entryNameList = new ArrayList<>();
 		for(Entry e : entryService.getAllEntry()) {
 			entryNameList.add(e.getEname());
+		}
+
+		return entryNameList;
+	}
+
+	protected List<Map<Long, String>> getEntryName() {
+		List<Map<Long, String>> entryNameList = new ArrayList<>();
+		for (Entry e : entryService.getAllEntry()) {
+			Map<Long, String> entryPair = new HashMap<>();
+			entryPair.put(e.getId(), e.getEname());
+			entryNameList.add(entryPair);
 		}
 
 		return entryNameList;
