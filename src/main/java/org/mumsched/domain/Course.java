@@ -1,18 +1,12 @@
 package org.mumsched.domain;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-
 import javax.persistence.Column;
-import javax.persistence.JoinColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import javax.validation.constraints.Size;
@@ -38,16 +32,24 @@ public class Course {
 	private String prerequisites;
 	
 	@NotEmpty(message="no empty field accepted")
+	private String faculty;
 	
+	/*@NotEmpty(message="no empty field accepted")
 	@ManyToMany
 	@JoinTable(name="course_faculty",
 		joinColumns = @JoinColumn(name = "facultyList_facultyId" ), 
 		inverseJoinColumns = @JoinColumn(name = "courseList_courseId"))
-	private Set<Faculty> facultyList = new HashSet<>();
+	private Set<Faculty> facultyList = new HashSet<>();*/
 	
 	@OneToMany(mappedBy="course")
 	private List<Section> sectionList = new ArrayList<>();
 	
+	public String getFaculty() {
+		return faculty;
+	}
+	public void setFaculty(String faculty) {
+		this.faculty = faculty;
+	}
 	public String getPrerequisites() {
 		return prerequisites;
 	}
@@ -61,12 +63,7 @@ public class Course {
 	public void setCourseId(Long courseId) {
 		this.courseId = courseId;
 	}
-	public Set<Faculty> getFacultyList() {
-		return facultyList;
-	}
-	public void setFacultyList(Set<Faculty> facultyList) {
-		this.facultyList = facultyList;
-	}
+
 	public List<Section> getSectionList() {
 		return sectionList;
 	}

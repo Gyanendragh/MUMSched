@@ -43,13 +43,13 @@ body {
 		</tr>
 			<tr>
 			<td>Faculty</td>
-			<td><select name="faculty">
-					<option value="nolle" <c:if test="${editCourse.faculty=='nolle'}">selected</c:if>>Prof. Nolle</option>
-					<option value="lerman" <c:if test="${editCourse.faculty=='lerman'}">selected</c:if>>Prof. Lerman</option>
-					<option value="saad" <c:if test="${editCourse.faculty=='saad'}">selected</c:if>>Prof Saad</option>
-					<option value="arrocha" <c:if test="${editCourse.faculty=='arrocha'}">selected</c:if>>Prof. Arrocha</option>
-					<option value="bruen" <c:if test="${editCourse.faculty=='bruen'}">selected</c:if>>Prof. Bruen</option>
-			</select></td>			
+			<td><input type="checkbox" name="faculty" value="Nolle" />Pro Nolle
+               		<input type="checkbox" name="faculty" value="Arrocha" />Pro Arrocha
+               		<input type="checkbox" name="faculty" value="Lerman" />Pro Lerman
+               		<input type="checkbox" name="faculty" value="Saad" />Pro Saad
+               		<input type="checkbox" name="faculty" value="Bruen" />Pro Bruen
+               		<input type="checkbox" name="faculty" value="Ruby" />Pro Ruby
+               		<input type="checkbox" name="faculty" value="Renuka" />Pro Renuka</td>			
 		</tr>
 		<tr>
 			<td></td>

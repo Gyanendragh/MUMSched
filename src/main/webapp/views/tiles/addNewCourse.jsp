@@ -44,13 +44,17 @@ body {
 		</tr>
 		 <tr>
                 <td>Faculties</td>
-               <td>
-               		<input type="checkbox" name="facultyList" value="Nolle" />Pro Nolle
-               		<input type="checkbox" name="facultyList" value="Arrocha" />Pro Arrocha
-               		<input type="checkbox" name="facultyList" value="Lerman" />Pro Lerman
+               <td><input type="checkbox" name="faculty" value="Nolle" />Pro Nolle
+               		<input type="checkbox" name="faculty" value="Arrocha" />Pro Arrocha
+               		<input type="checkbox" name="faculty" value="Lerman" />Pro Lerman
+               		<input type="checkbox" name="faculty" value="Saad" />Pro Saad
+               		<input type="checkbox" name="faculty" value="Bruen" />Pro Bruen
+               		<input type="checkbox" name="faculty" value="Ruby" />Pro Ruby
+               		<input type="checkbox" name="faculty" value="Renuka" />Pro Renuka
+               		
                	</td>
-                <td><form:errors path="facultyList" cssClass="error"></form:errors></td>
-        </tr>
+                <td><form:errors path="faculty" cssClass="error"></form:errors></td>
+            </tr>
 		<tr>
 			<td></td>
 			<td>
@@ -69,6 +73,7 @@ body {
 		<td>Course Name</td>
 		<td>Course Number</td>
 		<td>Prerequisites</td>
+		<td>Faculties</td>
 		<td>&nbsp;</td>
 
 	</tr>
@@ -82,10 +87,8 @@ body {
 			<td>${course.cnumber}</td>
 
 			<td>${course.prerequisites}</td>
-			
-			<td>${course.facultyList}</td>
 
-		
+			<td>${course.faculty}</td>
 			
 
 
