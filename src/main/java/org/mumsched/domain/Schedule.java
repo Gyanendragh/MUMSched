@@ -23,9 +23,6 @@ public class Schedule {
 	
 	@OneToOne
 	private Entry entry;
-	
-	@OneToMany(mappedBy = "schedule")
-	private List<Block> blockList = new ArrayList<>();
 
 	public Long getId() {
 		return id;

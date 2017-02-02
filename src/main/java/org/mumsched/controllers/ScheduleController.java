@@ -2,8 +2,10 @@ package org.mumsched.controllers;
 
 import java.util.List;
 
+import org.mumsched.domain.Block;
 import org.mumsched.domain.Entry;
 import org.mumsched.domain.Schedule;
+import org.mumsched.serviceimpl.BlockServiceImpl;
 import org.mumsched.serviceimpl.EntryServiceImpl;
 import org.mumsched.serviceimpl.ScheduleServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,9 @@ public class ScheduleController {
 
 	@Autowired
 	EntryServiceImpl entryService;
+
+	@Autowired
+	BlockServiceImpl blockService;
 
 	@RequestMapping(value={"/add"},method=RequestMethod.GET)
 	public String getForm(@ModelAttribute("newSchedule")Schedule schedule, Model model) {
@@ -61,12 +66,31 @@ public class ScheduleController {
 	protected void saveSchedule(Schedule scheduleObj) {
 		long id = Long.parseLong(scheduleObj.getName());
 		Entry entry = entryService.getEntryById(id);
-
 		Schedule schedule = new Schedule();
+
+		// Add Blocks
+		for(int i=1; i<8; i++) {
+			Block block = new Block();
+			block.setName("block");
+			blockService.save(block);
+			entry.getBlockList().add(block);
+		}
+
 		schedule.setEntry(entry);
 		schedule.setName("Schedule for " + entry.getEname());
-
 		scheduleService.save(schedule);
+	}
+
+	protected Entry addBlocks(Entry entry) {
+		for(int i=1; i<8; i++) {
+			Block block = new Block();
+			System.out.println("I am Here");
+			block.setName("block"+i);
+			blockService.save(block);
+			entry.getBlockList().add(block);
+		}
+		return entry;
+		
 	}
 
 }
