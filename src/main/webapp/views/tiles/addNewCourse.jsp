@@ -18,6 +18,7 @@ body {
 <div align="center">
 <h1>Add New Course</h1>
 <form:form modelAttribute="newCourse" method="post">
+	
 	<table >
 	
 		<tr>
@@ -41,16 +42,15 @@ body {
 					<option value="swe">Software Engineer</option>
 			</select></td>			
 		</tr>
-			<tr>
-			<td>Faculty</td>
-			<td><select name="faculty">
-					<option value="nolle">Prof. Nolle</option>
-					<option value="lerman">Prof. Lerman</option>
-					<option value="saad">Prof Saad</option>
-					<option value="arrocha">Prof. Arrocha</option>
-					<option value="bruen">Prof. Bruen</option>
-			</select></td>			
-		</tr>
+		 <tr>
+                <td>Faculties</td>
+               <td>
+               		<input type="checkbox" name="facultyList" value="Nolle" />Pro Nolle
+               		<input type="checkbox" name="facultyList" value="Arrocha" />Pro Arrocha
+               		<input type="checkbox" name="facultyList" value="Lerman" />Pro Lerman
+               	</td>
+                <td><form:errors path="facultyList" cssClass="error"></form:errors></td>
+        </tr>
 		<tr>
 			<td></td>
 			<td>
@@ -69,7 +69,6 @@ body {
 		<td>Course Name</td>
 		<td>Course Number</td>
 		<td>Prerequisites</td>
-		<td>Faculty</td>
 		<td>&nbsp;</td>
 
 	</tr>
@@ -83,13 +82,15 @@ body {
 			<td>${course.cnumber}</td>
 
 			<td>${course.prerequisites}</td>
+			
+			<td>${course.facultyList}</td>
 
-			<td>${course.faculty}</td>
+		
 			
 
 
-			<td><a href="<spring:url value="/course/edit/${course.id}"/>">Edit</a> | <a
-				href="<spring:url value="/course/delete/${course.id}"/>">Delete</a></td>
+			<td><a href="<spring:url value="/course/edit/${course.courseId}"/>">Edit</a> | <a
+				href="<spring:url value="/course/delete/${course.courseId}"/>">Delete</a></td>
 
 		</tr>
 		</tbody>

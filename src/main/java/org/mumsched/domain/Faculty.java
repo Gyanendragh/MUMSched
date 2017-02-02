@@ -15,9 +15,9 @@ import javax.persistence.OneToMany;
 public class Faculty {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+	private Long facultyId;
 	
-	private String name;
+	private String fullName;
 	
 	@OneToMany(mappedBy="faculty")
 	private List<Section> section = new ArrayList<>();
@@ -25,20 +25,39 @@ public class Faculty {
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "facultyList")
 	private List<Course> courseList = new ArrayList<>();
 
-	public Long getId() {
-		return id;
+
+
+	public Long getFacultyId() {
+		return facultyId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setFacultyId(Long facultyId) {
+		this.facultyId = facultyId;
 	}
 
-	public String getName() {
-		return name;
+	public List<Section> getSection() {
+		return section;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setSection(List<Section> section) {
+		this.section = section;
 	}
+
+	public List<Course> getCourseList() {
+		return courseList;
+	}
+
+	public void setCourseList(List<Course> courseList) {
+		this.courseList = courseList;
+	}
+
+	public String getFullName() {
+		return fullName;
+	}
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+
 
 }

@@ -18,9 +18,10 @@ public class Block {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
-	private String name;
+	private String bName;
 	
-	private Date date;
+	private Date bStartDate;
+	private Date bEndDate;
 
 	@ManyToOne
 	@JoinColumn(name="entry_id")
@@ -35,22 +36,6 @@ public class Block {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
 	}
 
 	public Entry getEntry() {
@@ -68,5 +53,30 @@ public class Block {
 	public void setSectionList(List<Section> sectionList) {
 		this.sectionList = sectionList;
 	}
+
+	public String getbName() {
+		return bName;
+	}
+
+	public void setbName(String bName) {
+		this.bName = bName;
+	}
+
+	public Date getbStartDate() {
+		return bStartDate;
+	}
+
+	public void setbStartDate(Date bStartDate) {
+		this.bStartDate = bStartDate;
+	}
+
+	public Date getbEndDate() {
+		return bEndDate;
+	}
+
+	public void setbEndDate(Date bEndDate) {
+		this.bEndDate = bEndDate;
+	}
+
 	
 }

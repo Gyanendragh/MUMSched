@@ -13,18 +13,10 @@ public class Section {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
-	private String name;
+	private String sectionName;
 	
 	private Long studentLimit;
 	
-	public Long getStudentLimit() {
-		return studentLimit;
-	}
-
-	public void setStudentLimit(Long studentLimit) {
-		this.studentLimit = studentLimit;
-	}
-
 	@ManyToOne
 	@JoinColumn(name="block_id")
 	private Block block;
@@ -45,14 +37,13 @@ public class Section {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public Long getStudentLimit() {
+		return studentLimit;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setStudentLimit(Long studentLimit) {
+		this.studentLimit = studentLimit;
 	}
-
 	public Block getBlock() {
 		return block;
 	}
@@ -75,6 +66,14 @@ public class Section {
 
 	public void setFaculty(Faculty faculty) {
 		this.faculty = faculty;
+	}
+
+	public String getSectionName() {
+		return sectionName;
+	}
+
+	public void setSectionName(String sectionName) {
+		this.sectionName = sectionName;
 	}
 	
 }

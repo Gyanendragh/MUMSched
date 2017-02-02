@@ -1,15 +1,20 @@
 package org.mumsched.domain;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
+import javax.persistence.JoinColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -18,7 +23,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class Course {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+	private Long courseId;
 	
 	@Column(unique = true)
     @Size(min=2, max=30)
@@ -35,10 +40,13 @@ public class Course {
 	@NotEmpty(message="no empty field accepted")
 	
 	@ManyToMany
-	private List<Faculty> facultyList = new ArrayList<>();
+	@JoinTable(name="course_faculty",
+		joinColumns = @JoinColumn(name = "facultyList_facultyId" ), 
+		inverseJoinColumns = @JoinColumn(name = "courseList_courseId"))
+	private Set<Faculty> facultyList = new HashSet<>();
 	
 	@OneToMany(mappedBy="course")
-	private List<Section> section = new ArrayList<>();
+	private List<Section> sectionList = new ArrayList<>();
 	
 	public String getPrerequisites() {
 		return prerequisites;
@@ -46,11 +54,24 @@ public class Course {
 	public void setPrerequisites(String prerequisites) {
 		this.prerequisites = prerequisites;
 	}
-	public Long getId() {
-		return id;
+	
+	public Long getCourseId() {
+		return courseId;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setCourseId(Long courseId) {
+		this.courseId = courseId;
+	}
+	public Set<Faculty> getFacultyList() {
+		return facultyList;
+	}
+	public void setFacultyList(Set<Faculty> facultyList) {
+		this.facultyList = facultyList;
+	}
+	public List<Section> getSectionList() {
+		return sectionList;
+	}
+	public void setSectionList(List<Section> sectionList) {
+		this.sectionList = sectionList;
 	}
 	public String getCname() {
 		return cname;

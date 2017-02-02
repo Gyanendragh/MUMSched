@@ -89,8 +89,8 @@ body {
 			
 
 
-			<td><a href="<spring:url value="/course/edit/${course.id}"/>">Edit</a> | <a
-				href="<spring:url value="/course/delete/${course.id}"/>">Delete</a></td>
+			<td><a href="<spring:url value="/course/edit/${course.courseId}"/>">Edit</a> | <a
+				href="<spring:url value="/course/delete/${course.courseId}"/>">Delete</a></td>
 
 		</tr>
 		</tbody>
