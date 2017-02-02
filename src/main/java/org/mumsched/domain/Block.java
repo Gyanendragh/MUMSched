@@ -26,6 +26,10 @@ public class Block {
 	@JoinColumn(name="entry_id")
 	private Entry entry;
 	
+	@ManyToOne
+	@JoinColumn(name="schedule_id")
+	private Schedule schedule;
+	
 	@OneToMany(mappedBy="block")
 	private List<Section> sectionList = new ArrayList<>();
 	
