@@ -2,7 +2,6 @@ package org.mumsched.serviceimpl;
 
 import java.util.List;
 
-
 import org.mumsched.domain.Entry;
 import org.mumsched.repositories.EntryRepository;
 import org.mumsched.service.EntryService;
@@ -13,6 +12,7 @@ import org.springframework.stereotype.Service;
 public class EntryServiceImpl implements EntryService {
 	@Autowired
 	EntryRepository entryrepository;
+
 
 	@Override
 	public void save(Entry entry) {

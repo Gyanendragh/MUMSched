@@ -72,5 +72,14 @@ public class Block {
 	public void setSectionList(List<Section> sectionList) {
 		this.sectionList = sectionList;
 	}
+
+	public Schedule getSchedule() {
+		return schedule;
+	}
+
+	public void setSchedule(Schedule schedule) {
+		this.schedule = schedule;
+	}
+	
 	
 }

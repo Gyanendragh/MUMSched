@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -39,7 +40,7 @@ public class Entry {
 	@NotNull @Max(200)
 	private int noOfUsResident;
 	
-	@OneToMany(mappedBy="entry")
+	@OneToMany(mappedBy="entry", fetch = FetchType.EAGER)
 	List<Block> blockList = new ArrayList<>();
 	
 	public int getNoOfFppStudents() {
