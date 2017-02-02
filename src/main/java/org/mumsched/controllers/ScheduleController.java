@@ -32,18 +32,11 @@ public class ScheduleController {
 	}
 
 	@RequestMapping(value={"/add"}, method=RequestMethod.POST)
-	public String save(@ModelAttribute("newSchedule") @Validated Schedule scheduleObj, BindingResult result, Model model ) {
+	public String generateSchedule(@ModelAttribute("newSchedule") @Validated Schedule scheduleObj, BindingResult result, Model model ) {
 		if(result.hasErrors()) {
 			return "scheduleAddForm";
 		} else {
-			long id = Long.parseLong(scheduleObj.getName());
-			Entry entry = entryService.getEntryById(id);
-			
-			Schedule schedule = new Schedule();
-			schedule.setEntry(entry);
-			schedule.setName("Schedule for " + entry.getEname());
-			
-			scheduleService.save(schedule);
+			this.saveSchedule(scheduleObj);
 			return "redirect:/schedule/add";
 		}
 	}
@@ -63,6 +56,17 @@ public class ScheduleController {
 	public List<Schedule> showList(){
 		List<Schedule> scheduleList=scheduleService.getAllSchedule();
 		return scheduleList;
+	}
+
+	protected void saveSchedule(Schedule scheduleObj) {
+		long id = Long.parseLong(scheduleObj.getName());
+		Entry entry = entryService.getEntryById(id);
+
+		Schedule schedule = new Schedule();
+		schedule.setEntry(entry);
+		schedule.setName("Schedule for " + entry.getEname());
+
+		scheduleService.save(schedule);
 	}
 
 }
