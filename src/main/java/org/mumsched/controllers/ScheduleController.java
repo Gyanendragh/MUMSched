@@ -28,7 +28,7 @@ public class ScheduleController {
 
 	@RequestMapping(value={"/add"},method=RequestMethod.GET)
 	public String getForm(@ModelAttribute("newSchedule")Schedule schedule, Model model) {
-		model.addAttribute("entryList", this.getEntryName());
+		model.addAttribute("entryList", entryService.getAllEntry());
 		return "scheduleAddForm";
 	}
 
@@ -37,11 +37,14 @@ public class ScheduleController {
 		if(result.hasErrors()) {
 			return "scheduleAddForm";
 		} else {
-			scheduleService.save(scheduleObj);
-//			System.out.println("Schedule Name" + scheduleObj.getName());
-//			System.out.println("Schedule Id" + scheduleObj.getId());
-//			System.out.println("Entry ID" + scheduleObj);
-//			System.out.println("Saved");
+			long id = Long.parseLong(scheduleObj.getName());
+			Entry entry = entryService.getEntryById(id);
+			
+			Schedule schedule = new Schedule();
+			schedule.setEntry(entry);
+			schedule.setName("Schedule for " + entry.getEname());
+			
+			scheduleService.save(schedule);
 			return "redirect:/schedule/add";
 		}
 	}
@@ -64,13 +67,13 @@ public class ScheduleController {
 	}
 
 
-	protected List<String> getEntryName() {
-		List<String> entryNameList = new ArrayList<>();
-		for(Entry e : entryService.getAllEntry()) {
-			entryNameList.add(e.getEname());
-		}
-
-		return entryNameList;
-	}
+//	protected List<String> getEntryName() {
+//		List<String> entryNameList = new ArrayList<>();
+//		for(Entry e : entryService.getAllEntry()) {
+//			entryNameList.add(e.getEname());
+//		}
+//
+//		return entryNameList;
+//	}
 
 }
