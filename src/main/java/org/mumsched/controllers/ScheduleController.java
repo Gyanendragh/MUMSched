@@ -1,6 +1,5 @@
 package org.mumsched.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.mumsched.domain.Entry;
@@ -65,15 +64,5 @@ public class ScheduleController {
 		List<Schedule> scheduleList=scheduleService.getAllSchedule();
 		return scheduleList;
 	}
-
-
-//	protected List<String> getEntryName() {
-//		List<String> entryNameList = new ArrayList<>();
-//		for(Entry e : entryService.getAllEntry()) {
-//			entryNameList.add(e.getEname());
-//		}
-//
-//		return entryNameList;
-//	}
 
 }
