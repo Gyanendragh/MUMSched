@@ -29,8 +29,6 @@ public class ScheduleController {
 	@RequestMapping(value={"/add"},method=RequestMethod.GET)
 	public String getForm(@ModelAttribute("newSchedule")Schedule schedule, Model model) {
 		model.addAttribute("entryList", this.getEntryName());
-		List<Schedule> scheduleList = scheduleService.getAllSchedule();
-		model.addAttribute("scheduleList", scheduleList);
 		return "scheduleAddForm";
 	}
 
@@ -40,7 +38,10 @@ public class ScheduleController {
 			return "scheduleAddForm";
 		} else {
 			scheduleService.save(scheduleObj);
-			System.out.println("Saved");
+//			System.out.println("Schedule Name" + scheduleObj.getName());
+//			System.out.println("Schedule Id" + scheduleObj.getId());
+//			System.out.println("Entry ID" + scheduleObj);
+//			System.out.println("Saved");
 			return "redirect:/schedule/add";
 		}
 	}
@@ -55,7 +56,14 @@ public class ScheduleController {
 	public String view(@PathVariable("id") Long id) {
 		return "viewSchedule";
 	}
-	
+
+	@ModelAttribute("scheduleList")
+	public List<Schedule> showList(){
+		List<Schedule> scheduleList=scheduleService.getAllSchedule();
+		return scheduleList;
+	}
+
+
 	protected List<String> getEntryName() {
 		List<String> entryNameList = new ArrayList<>();
 		for(Entry e : entryService.getAllEntry()) {
