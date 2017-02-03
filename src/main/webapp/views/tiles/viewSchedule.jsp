@@ -8,14 +8,17 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<jsp:include page='home.jsp'>
+		<jsp:param name="articleId" value="" />
+	</jsp:include>
+
 	<div class="panel panel-info">
 		<div class="panel-heading">Schedule</div>
 		<div class="panel-body"></div>
 		<table class="table">
 			<tr>
-				<td colspan="2">${schedule.name}
-				</td>
-				<c:forEach var="block" items="${blockList}">
+				<td colspan="2">${schedule.name}</td>
+				<c:forEach var="block" items="${schedule.blockList}">
 					<tr>
 						<td>${block.blockName }</td>
 					</tr>

@@ -1,9 +1,7 @@
 package org.mumsched.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import org.mumsched.domain.Block;
 import org.mumsched.domain.Schedule;
 import org.mumsched.serviceimpl.BlockServiceImpl;
 import org.mumsched.serviceimpl.EntryServiceImpl;
@@ -55,7 +53,6 @@ public class ScheduleController {
 	@RequestMapping(value="/view/{id}", method=RequestMethod.GET)
 	public String viewSchedule(@PathVariable("id") Long scheduleId, Model model) {
 		model.addAttribute("schedule", scheduleService.getScheduleById(scheduleId));
-		model.addAttribute("blockList", blockService.getBlockListByScheduleId(scheduleId));
 		return "viewSchedule";
 	}
 
