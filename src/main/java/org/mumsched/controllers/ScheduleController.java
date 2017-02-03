@@ -76,7 +76,7 @@ public class ScheduleController {
 
 		for(int i=1; i<8; i++) {
 			Block block = new Block();
-			block.setName("block"+i);
+			block.setbName("block"+i);
 			block.setEntry(entry);
 
 			blockService.save(block);

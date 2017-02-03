@@ -10,8 +10,8 @@ public interface CourseService {
 
 	public List<Course> getAllCourse();
 
-	public Course getCourseById(Long id); 
+	public Course getCourseBycourseId(Long courseId); 
 
-	public void delete(Long id);
+	public void delete(Long courseId);
 
 }

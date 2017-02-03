@@ -26,14 +26,14 @@ public class CourseServiceImpl implements CourseService {
 	}
 
 	@Override
-	public Course getCourseById(Long id) {
+	public Course getCourseBycourseId(Long courseId) {
 
-		return courserepository.findOne(id);
+		return courserepository.findOne(courseId);
 	}
 
 	@Override
-	public void delete(Long id) {
-		courserepository.delete(id);
+	public void delete(Long courseId) {
+		courserepository.delete(courseId);
 
 	}
 
