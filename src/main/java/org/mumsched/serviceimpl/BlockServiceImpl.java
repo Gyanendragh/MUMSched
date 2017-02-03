@@ -42,11 +42,10 @@ public class BlockServiceImpl implements BlockService{
 	}
 
 	public Object getBlockListByScheduleId(Long scheduleId) {
-		Long entryId = scheduleService.getScheduleById(scheduleId).getEntry().getId();
 
 		List<Block> blockList = new ArrayList<>();
 		for(Block block: this.getAllBlock()) {
-			if(block.getEntry().getId() == entryId) {
+			if(block.getSchedule().getId() == scheduleId) {
 				blockList.add(block);
 			}
 		}

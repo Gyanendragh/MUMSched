@@ -49,18 +49,17 @@ public class ScheduleServiceImpl implements ScheduleService {
 
 		schedule.setEntry(entry);
 		schedule.setName("Schedule for " + entry.getEname());
+		entryService.save(entry);
+		this.save(schedule);
 
 		for(int i=1; i<8; i++) {
 			Block block = new Block();
 			block.setBlockName("Block " + i);
-			block.setEntry(entry);
+			block.setSchedule(schedule);
 
 			blockService.save(block);
-			entry.getBlockList().add(block);
-
+			schedule.getBlockList().add(block);
 		}
-		entryService.save(entry);
-		this.save(schedule);
 
 	}
 

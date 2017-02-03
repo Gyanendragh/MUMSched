@@ -40,8 +40,8 @@ public class Entry {
 	@NotNull @Max(200)
 	private int noOfUsResident;
 	
-	@OneToMany(mappedBy="entry", fetch = FetchType.EAGER)
-	List<Block> blockList = new ArrayList<>();
+//	@OneToMany(mappedBy="entry", fetch = FetchType.EAGER)
+//	List<Block> blockList = new ArrayList<>();
 	
 	public int getNoOfFppStudents() {
 		return noOfFppStudents;
@@ -79,11 +79,11 @@ public class Entry {
 	public void setEname(String ename) {
 		this.ename = ename;
 	}
-	public List<Block> getBlockList() {
-		return blockList;
-	}
-	public void setBlockList(List<Block> blockList) {
-		this.blockList = blockList;
-	}
+//	public List<Block> getBlockList() {
+//		return blockList;
+//	}
+//	public void setBlockList(List<Block> blockList) {
+//		this.blockList = blockList;
+//	}
 	
 }

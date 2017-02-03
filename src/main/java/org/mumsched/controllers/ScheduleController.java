@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.mumsched.domain.Block;
-import org.mumsched.domain.Entry;
 import org.mumsched.domain.Schedule;
 import org.mumsched.serviceimpl.BlockServiceImpl;
 import org.mumsched.serviceimpl.EntryServiceImpl;
@@ -57,7 +56,6 @@ public class ScheduleController {
 	public String viewSchedule(@PathVariable("id") Long scheduleId, Model model) {
 		model.addAttribute("schedule", scheduleService.getScheduleById(scheduleId));
 		model.addAttribute("blockList", blockService.getBlockListByScheduleId(scheduleId));
-//		model.addAttribute("blockList", this.getBlockList(scheduleId));
 		return "viewSchedule";
 	}
 
@@ -67,16 +65,4 @@ public class ScheduleController {
 		return scheduleList;
 	}
 	
-	protected List<Block> getBlockList(Long scheduleId) {
-		Long entryId = scheduleService.getScheduleById(scheduleId).getEntry().getId();
-		
-		List<Block> blockList = new ArrayList<>();
-		for(Block block: blockService.getAllBlock()) {
-			if(block.getEntry().getId() == entryId) {
-				blockList.add(block);
-			}
-		}
-		return blockList;
-	}
-
 }
