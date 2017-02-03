@@ -42,7 +42,7 @@ public class ScheduleController {
 		if(result.hasErrors()) {
 			return "scheduleAddForm";
 		} else {
-			this.saveSchedule(scheduleObj);
+			scheduleService.createSchedule(scheduleObj);
 			return "redirect:/schedule/add";
 		}
 	}
@@ -56,7 +56,8 @@ public class ScheduleController {
 	@RequestMapping(value="/view/{id}", method=RequestMethod.GET)
 	public String viewSchedule(@PathVariable("id") Long scheduleId, Model model) {
 		model.addAttribute("schedule", scheduleService.getScheduleById(scheduleId));
-		model.addAttribute("blockList", this.getBlockList(scheduleId));
+		model.addAttribute("blockList", blockService.getBlockListByScheduleId(scheduleId));
+//		model.addAttribute("blockList", this.getBlockList(scheduleId));
 		return "viewSchedule";
 	}
 
@@ -64,27 +65,6 @@ public class ScheduleController {
 	public List<Schedule> showList(){
 		List<Schedule> scheduleList=scheduleService.getAllSchedule();
 		return scheduleList;
-	}
-
-	protected void saveSchedule(Schedule scheduleObj) {
-		long id = Long.parseLong(scheduleObj.getName());
-		Entry entry = entryService.getEntryById(id);
-		Schedule schedule = new Schedule();
-
-		schedule.setEntry(entry);
-		schedule.setName("Schedule for " + entry.getEname());
-
-		for(int i=1; i<8; i++) {
-			Block block = new Block();
-			block.setbName("block"+i);
-			block.setEntry(entry);
-
-			blockService.save(block);
-			entry.getBlockList().add(block);
-
-		}
-		entryService.save(entry);
-		scheduleService.save(schedule);
 	}
 	
 	protected List<Block> getBlockList(Long scheduleId) {

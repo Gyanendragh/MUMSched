@@ -13,11 +13,11 @@
 		<div class="panel-body"></div>
 		<table class="table">
 			<tr>
-				<td colspan="2">${schedule.name} for ${schedule.entry.ename}
+				<td colspan="2">${schedule.name}
 				</td>
 				<c:forEach var="block" items="${blockList}">
 					<tr>
-						<td>${block.name }</td>
+						<td>${block.blockName }</td>
 					</tr>
 				</c:forEach>
 

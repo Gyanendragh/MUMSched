@@ -17,12 +17,9 @@ import javax.persistence.OneToMany;
 public class Block {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+	private Long blockId;
 
-	private String bName;
-
-	private Date bStartDate;
-	private Date bEndDate;
+	private String blockName;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="entry_id")
@@ -31,12 +28,20 @@ public class Block {
 	@OneToMany(mappedBy="block")
 	private List<Section> sectionList = new ArrayList<>();
 
-	public Long getId() {
-		return id;
+	public Long getBlockId() {
+		return blockId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setBlockId(Long blockId) {
+		this.blockId = blockId;
+	}
+
+	public String getBlockName() {
+		return blockName;
+	}
+
+	public void setBlockName(String blockName) {
+		this.blockName = blockName;
 	}
 
 	public Entry getEntry() {
@@ -53,30 +58,6 @@ public class Block {
 
 	public void setSectionList(List<Section> sectionList) {
 		this.sectionList = sectionList;
-	}
-
-	public String getbName() {
-		return bName;
-	}
-
-	public void setbName(String bName) {
-		this.bName = bName;
-	}
-
-	public Date getbStartDate() {
-		return bStartDate;
-	}
-
-	public void setbStartDate(Date bStartDate) {
-		this.bStartDate = bStartDate;
-	}
-
-	public Date getbEndDate() {
-		return bEndDate;
-	}
-
-	public void setbEndDate(Date bEndDate) {
-		this.bEndDate = bEndDate;
 	}
 
 }
