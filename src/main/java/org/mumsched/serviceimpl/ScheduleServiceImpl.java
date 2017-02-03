@@ -49,7 +49,6 @@ public class ScheduleServiceImpl implements ScheduleService {
 
 		schedule.setEntry(entry);
 		schedule.setName("Schedule for " + entry.getEname());
-		entryService.save(entry);
 		this.save(schedule);
 
 		for(int i=1; i<8; i++) {

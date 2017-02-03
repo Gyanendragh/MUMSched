@@ -26,7 +26,7 @@ public class Schedule {
 	@OneToOne
 	private Entry entry;
 
-	@OneToMany(mappedBy="schedule", fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+	@OneToMany(mappedBy="schedule", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	List<Block> blockList = new ArrayList<>();
 	
 	public Long getId() {
