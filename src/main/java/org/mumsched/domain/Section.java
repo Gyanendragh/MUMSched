@@ -6,25 +6,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Section {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
-	
-	private String name;
-	
+	@NotNull
+	private Long sectionId;
+	@NotNull
+	private String sectionName;
+	@NotNull
 	private Long studentLimit;
 	
-	public Long getStudentLimit() {
-		return studentLimit;
-	}
-
-	public void setStudentLimit(Long studentLimit) {
-		this.studentLimit = studentLimit;
-	}
-
 	@ManyToOne
 	@JoinColumn(name="block_id")
 	private Block block;
@@ -38,21 +32,20 @@ public class Section {
 	private Faculty faculty;
 	
 	public Long getId() {
-		return id;
+		return sectionId;
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		this.sectionId = id;
 	}
 
-	public String getName() {
-		return name;
+	public Long getStudentLimit() {
+		return studentLimit;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setStudentLimit(Long studentLimit) {
+		this.studentLimit = studentLimit;
 	}
-
 	public Block getBlock() {
 		return block;
 	}
@@ -75,6 +68,14 @@ public class Section {
 
 	public void setFaculty(Faculty faculty) {
 		this.faculty = faculty;
+	}
+
+	public String getSectionName() {
+		return sectionName;
+	}
+
+	public void setSectionName(String sectionName) {
+		this.sectionName = sectionName;
 	}
 	
 }

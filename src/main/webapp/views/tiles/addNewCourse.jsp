@@ -43,7 +43,7 @@ body {
 		</tr>
 			<tr>
 			<td>Faculty</td>
-			<td><select name="faculty">
+			<td><select name=" facultyList">
 					<option value="nolle">Prof. Nolle</option>
 					<option value="lerman">Prof. Lerman</option>
 					<option value="saad">Prof Saad</option>

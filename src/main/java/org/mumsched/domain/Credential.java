@@ -79,6 +79,5 @@ public class Credential {
 	public void setUserid(Long userid) {
 		this.userid = userid;
 	}
-	
-	
+
 }

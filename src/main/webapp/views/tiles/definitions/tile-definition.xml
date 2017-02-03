@@ -37,6 +37,18 @@
 		<put-attribute name="body" value="/views/tiles/courseformedit.jsp" />
 		<put-attribute name="footer" value="/views/tiles/templates/bottom.jsp" />
 	</definition>
+	
+	<definition name="blockAddForm" extends="baseLayout">
+		<put-attribute name="navigation" value="/views/tiles/templates/top.jsp" />
+		<put-attribute name="body" value="/views/tiles/addNewBlock.jsp" />
+		<put-attribute name="footer" value="/views/tiles/templates/bottom.jsp" />
+	</definition>
+
+	<definition name="blockEditForm" extends="baseLayout">
+		<put-attribute name="navigation" value="/views/tiles/templates/top.jsp" />
+		<put-attribute name="body" value="/views/tiles/blockformedit.jsp" />
+		<put-attribute name="footer" value="/views/tiles/templates/bottom.jsp" />
+	</definition>
 
 	<definition name="entryAddForm" extends="baseLayout">
 		<put-attribute name="navigation" value="/views/tiles/templates/top.jsp" />
@@ -47,6 +59,30 @@
 	<definition name="entryEditForm" extends="baseLayout">
 		<put-attribute name="navigation" value="/views/tiles/templates/top.jsp" />
 		<put-attribute name="body" value="/views/tiles/entryformedit.jsp" />
+		<put-attribute name="footer" value="/views/tiles/templates/bottom.jsp" />
+	</definition>
+	
+	<definition name="facultyAddForm" extends="baseLayout">
+		<put-attribute name="navigation" value="/views/tiles/templates/top.jsp" />
+		<put-attribute name="body" value="/views/tiles/addNewFaculty.jsp" />
+		<put-attribute name="footer" value="/views/tiles/templates/bottom.jsp" />
+	</definition>
+
+	<definition name="facultyEditForm" extends="baseLayout">
+		<put-attribute name="navigation" value="/views/tiles/templates/top.jsp" />
+		<put-attribute name="body" value="/views/tiles/facultyformedit.jsp" />
+		<put-attribute name="footer" value="/views/tiles/templates/bottom.jsp" />
+	</definition>
+	
+	<definition name="studentAddForm" extends="baseLayout">
+		<put-attribute name="navigation" value="/views/tiles/templates/top.jsp" />
+		<put-attribute name="body" value="/views/tiles/addNewStudent.jsp" />
+		<put-attribute name="footer" value="/views/tiles/templates/bottom.jsp" />
+	</definition>
+
+	<definition name="studentEditForm" extends="baseLayout">
+		<put-attribute name="navigation" value="/views/tiles/templates/top.jsp" />
+		<put-attribute name="body" value="/views/tiles/studentformedit.jsp" />
 		<put-attribute name="footer" value="/views/tiles/templates/bottom.jsp" />
 	</definition>
 

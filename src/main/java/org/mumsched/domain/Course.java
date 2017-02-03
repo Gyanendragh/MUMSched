@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -18,11 +19,13 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class Course {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@NotNull
 	private Long id;
 	
 	@Column(unique = true)
     @Size(min=2, max=30)
 	@NotEmpty(message="no empty field accepted")
+	
 	private String cname; //  imp note path at the jsp file must equivalent to this cname
 	
 	@Column(unique = true)
@@ -38,7 +41,7 @@ public class Course {
 	private List<Faculty> facultyList = new ArrayList<>();
 	
 	@OneToMany(mappedBy="course")
-	private List<Section> section = new ArrayList<>();
+	private List<Section> sectionList = new ArrayList<>();
 	
 	public String getPrerequisites() {
 		return prerequisites;

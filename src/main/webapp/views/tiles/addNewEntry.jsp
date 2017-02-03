@@ -90,8 +90,6 @@ body {
 			<td>${entry.noOfUsResident}</td>
 			
 
-			
-
 
 			<td><a href="<spring:url value="/entry/edit/${entry.id}"/>">Edit</a> | <a
 				href="<spring:url value="/entry/delete/${entry.id}"/>">Delete</a></td>
