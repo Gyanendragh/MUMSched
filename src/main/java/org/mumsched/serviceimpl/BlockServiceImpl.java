@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.mumsched.domain.Block;
+import org.mumsched.domain.Schedule;
 import org.mumsched.repositories.BlockRepository;
 import org.mumsched.service.BlockService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +51,18 @@ public class BlockServiceImpl implements BlockService{
 			}
 		}
 		return blockList;
+	}
+
+	public void addBlocksToSchedule(Schedule schedule) {
+		for(int i=1; i<8; i++) {
+			Block block = new Block();
+			block.setBlockName("Block " + i);
+			block.setSchedule(schedule);
+
+			this.save(block);
+			schedule.getBlockList().add(block);
+		}
+		
 	}
 
 

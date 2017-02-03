@@ -2,7 +2,6 @@ package org.mumsched.serviceimpl;
 
 import java.util.List;
 
-import org.mumsched.domain.Block;
 import org.mumsched.domain.Entry;
 import org.mumsched.domain.Schedule;
 import org.mumsched.repositories.ScheduleRepository;
@@ -50,15 +49,9 @@ public class ScheduleServiceImpl implements ScheduleService {
 		schedule.setEntry(entry);
 		schedule.setName("Schedule for " + entry.getEname());
 		this.save(schedule);
-
-		for(int i=1; i<8; i++) {
-			Block block = new Block();
-			block.setBlockName("Block " + i);
-			block.setSchedule(schedule);
-
-			blockService.save(block);
-			schedule.getBlockList().add(block);
-		}
+		
+		//Add Blocks to Schedule
+		blockService.addBlocksToSchedule(schedule);
 
 	}
 
