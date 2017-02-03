@@ -13,7 +13,8 @@
 		</div>
 		<table class="table">
 			<tr>
-				<td></td>
+				<td>${schedule.name}</td>
+				
 			</tr>
 		</table>
 	</div>
