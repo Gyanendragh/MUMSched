@@ -91,5 +91,11 @@
 		<put-attribute name="body" value="/views/tiles/addNewSchedule.jsp" />
 		<put-attribute name="footer" value="/views/tiles/templates/bottom.jsp" />
 	</definition>
+	
+	<definition name="viewSchedule" extends="baseLayout">
+		<put-attribute name="navigation" value="/views/tiles/templates/top.jsp" />
+		<put-attribute name="body" value="/views/tiles/viewSchedule.jsp" />
+		<put-attribute name="footer" value="/views/tiles/templates/bottom.jsp" />
+	</definition>
 
 </tiles-definitions>

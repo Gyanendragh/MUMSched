@@ -2,7 +2,6 @@ package org.mumsched.domain;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -30,6 +29,10 @@ public class Block {
 	@ManyToOne
 	@JoinColumn(name="entry_id")
 	private Entry entry;
+	
+	@ManyToOne
+	@JoinColumn(name="schedule_id")
+	private Schedule schedule;
 	
 	@OneToMany(mappedBy="block")
 	private List<Section> sectionList = new ArrayList<>();
@@ -81,5 +84,13 @@ public class Block {
 	public void setbEndDate(LocalDate bEndDate) {
 		this.blockEndDate = bEndDate;
 	}
+	public Schedule getSchedule() {
+		return schedule;
+	}
+
+	public void setSchedule(Schedule schedule) {
+		this.schedule = schedule;
+	}
+	
 	
 }

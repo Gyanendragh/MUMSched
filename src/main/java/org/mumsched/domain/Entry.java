@@ -5,11 +5,11 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -18,7 +18,6 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-
 public class Entry {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -41,10 +40,7 @@ public class Entry {
 	@NotNull @Max(200)
 	private int noOfUsResident;
 	
-	@OneToOne
-	private Schedule schedule;
-	
-	@OneToMany(mappedBy="entry")
+	@OneToMany(mappedBy="entry", fetch = FetchType.EAGER)
 	List<Block> blockList = new ArrayList<>();
 	
 	public int getNoOfFppStudents() {
@@ -74,7 +70,6 @@ public class Entry {
 	public String getEname() {
 		return ename;
 	}
-	
 	public String getEyear() {
 		return eyear;
 	}
@@ -83,12 +78,6 @@ public class Entry {
 	}
 	public void setEname(String ename) {
 		this.ename = ename;
-	}
-	public Schedule getSchedule() {
-		return schedule;
-	}
-	public void setSchedule(Schedule schedule) {
-		this.schedule = schedule;
 	}
 	public List<Block> getBlockList() {
 		return blockList;

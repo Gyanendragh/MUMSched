@@ -38,5 +38,5 @@ public class Schedule {
 	public void setEntry(Entry entry) {
 		this.entry = entry;
 	}
-	
+
 }
