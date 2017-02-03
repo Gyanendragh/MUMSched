@@ -17,19 +17,19 @@ public class Block {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-	
+
 	private String bName;
-	
+
 	private Date bStartDate;
 	private Date bEndDate;
 
 	@ManyToOne
 	@JoinColumn(name="entry_id")
 	private Entry entry;
-	
+
 	@OneToMany(mappedBy="block")
 	private List<Section> sectionList = new ArrayList<>();
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -78,5 +78,5 @@ public class Block {
 		this.bEndDate = bEndDate;
 	}
 
-	
+
 }

@@ -22,14 +22,14 @@ public class CourseController {
 	CourseService courseservice;
 	@Autowired
 	FacultyService facultyservice;
-	
+
 	@RequestMapping(value={"/add"},method=RequestMethod.GET)
 	public String getForm(@ModelAttribute("newCourse") Course course,Model model){
 		/*model.addAttribute("facultyList", this.getFacultyName());
 		System.out.println("...");*/
 		return "courseAddForm";
 	}
-	
+
 	/*private HashMap<Long, String> getFacultyName() {
 		HashMap<Long, String> facultyNamePair = new HashMap<Long, String>();
 		for(Faculty f : facultyservice.getAllFaculty()) {
@@ -45,34 +45,34 @@ public class CourseController {
 		if(result.hasErrors()){
 			return "courseAddForm";
 		}else{
-		courseservice.save(courseObj);
-		return "redirect:/course/add";
+			courseservice.save(courseObj);
+			return "redirect:/course/add";
 		}
 	}
-	
+
 	@RequestMapping(value="/edit/{courseId}", method=RequestMethod.GET)
 	public String get(@PathVariable long courseId, Model model) {
 		model.addAttribute("editCourse", courseservice.getCourseBycourseId(courseId));
 		return "courseEditForm";
 	}
-	
+
 	@RequestMapping(value="/edit/{courseId}", method=RequestMethod.POST)
 	public String update(Course course, @PathVariable long courseId, @ModelAttribute("editCourse") @Validated Course editCourse, BindingResult result, Model model) {
 		if(result.hasErrors()){
 			return"courseEditForm";
 		}else{
-		course.getCourseId();
-		courseservice.save(editCourse);
-		return "redirect:/course/add";
+			course.getCourseId();
+			courseservice.save(editCourse);
+			return "redirect:/course/add";
 		}
 	}
-	
+
 	@RequestMapping(value="/delete/{courseId}", method=RequestMethod.GET)
 	public String delete(@PathVariable("courseId") Long courseId) {
 		courseservice.delete(courseId);
 		return "redirect:/course/add";
 	}
-	
+
 	@ModelAttribute("courselist")
 	public List<Course> showList(){
 		List<Course> courseList=courseservice.getAllCourse();
