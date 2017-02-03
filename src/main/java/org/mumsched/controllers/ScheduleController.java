@@ -1,5 +1,6 @@
 package org.mumsched.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.mumsched.domain.Block;
@@ -26,6 +27,7 @@ public class ScheduleController {
 
 	@Autowired
 	EntryServiceImpl entryService;
+
 	@Autowired
 	BlockServiceImpl blockService;
 
@@ -52,8 +54,9 @@ public class ScheduleController {
 	}
 
 	@RequestMapping(value="/view/{id}", method=RequestMethod.GET)
-	public String viewSchedule(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("schedule", scheduleService.getScheduleById(id));
+	public String viewSchedule(@PathVariable("id") Long scheduleId, Model model) {
+		model.addAttribute("schedule", scheduleService.getScheduleById(scheduleId));
+		model.addAttribute("blockList", this.getBlockList(scheduleId));
 		return "viewSchedule";
 	}
 
@@ -74,6 +77,7 @@ public class ScheduleController {
 		for(int i=1; i<8; i++) {
 			Block block = new Block();
 			block.setName("block"+i);
+			block.setEntry(entry);
 
 			blockService.save(block);
 			entry.getBlockList().add(block);
@@ -81,6 +85,18 @@ public class ScheduleController {
 		}
 		entryService.save(entry);
 		scheduleService.save(schedule);
+	}
+	
+	protected List<Block> getBlockList(Long scheduleId) {
+		Long entryId = scheduleService.getScheduleById(scheduleId).getEntry().getId();
+		
+		List<Block> blockList = new ArrayList<>();
+		for(Block block: blockService.getAllBlock()) {
+			if(block.getEntry().getId() == entryId) {
+				blockList.add(block);
+			}
+		}
+		return blockList;
 	}
 
 }
