@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,13 +23,9 @@ public class Block {
 	
 	private Date date;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="entry_id")
 	private Entry entry;
-	
-	@ManyToOne
-	@JoinColumn(name="schedule_id")
-	private Schedule schedule;
 	
 	@OneToMany(mappedBy="block")
 	private List<Section> sectionList = new ArrayList<>();
@@ -73,13 +70,4 @@ public class Block {
 		this.sectionList = sectionList;
 	}
 
-	public Schedule getSchedule() {
-		return schedule;
-	}
-
-	public void setSchedule(Schedule schedule) {
-		this.schedule = schedule;
-	}
-	
-	
 }
