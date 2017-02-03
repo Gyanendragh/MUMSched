@@ -52,7 +52,8 @@ public class ScheduleController {
 	}
 
 	@RequestMapping(value="/view/{id}", method=RequestMethod.GET)
-	public String view(@PathVariable("id") Long id) {
+	public String viewSchedule(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("schedule", scheduleService.getScheduleById(id));
 		return "viewSchedule";
 	}
 
