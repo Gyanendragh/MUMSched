@@ -43,11 +43,12 @@ public class SectionServiceImpl implements SectionService {
 			Section section = new Section();
 			section.setSectionName("FPP");
 			section.setStudentLimit((long) 25);
+			section.setBlock(block);
 			
 			this.save(section);
 			block.getSectionList().add(section);
 		}
 		
 	}
-
+	
 }
