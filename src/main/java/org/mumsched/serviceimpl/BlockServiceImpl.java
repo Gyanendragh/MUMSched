@@ -15,6 +15,9 @@ public class BlockServiceImpl implements BlockService{
 
 	@Autowired
 	ScheduleServiceImpl scheduleService;
+
+	@Autowired
+	SectionServiceImpl sectionService;
 	
 	@Autowired
 	BlockRepository blockrepository;
@@ -60,8 +63,8 @@ public class BlockServiceImpl implements BlockService{
 			block.setSchedule(schedule);
 			
 			// Add Sections to Block
-
 			this.save(block);
+			sectionService.addSectionsToBlock(block);
 			schedule.getBlockList().add(block);
 		}
 		

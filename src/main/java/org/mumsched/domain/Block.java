@@ -3,6 +3,7 @@ package org.mumsched.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -24,7 +25,7 @@ public class Block {
 	@JoinColumn(name="schedule_id")
 	private Schedule schedule;
 
-	@OneToMany(mappedBy="block")
+	@OneToMany(mappedBy="block", cascade = CascadeType.ALL)
 	private List<Section> sectionList = new ArrayList<>();
 
 	public Long getBlockId() {
