@@ -3,6 +3,8 @@ package org.mumsched.serviceimpl;
 import java.util.List;
 
 import org.mumsched.domain.Block;
+import org.mumsched.domain.Course;
+import org.mumsched.domain.Faculty;
 import org.mumsched.domain.Section;
 import org.mumsched.repositories.SectionRepository;
 import org.mumsched.service.SectionService;
@@ -12,6 +14,13 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SectionServiceImpl implements SectionService {
+
+	@Autowired
+	CourseServiceImpl courseService;
+
+	@Autowired
+	FacultyServiceImpl facultyService;
+
 	@Autowired
 	SectionRepository sectionrepository;
 
@@ -38,17 +47,48 @@ public class SectionServiceImpl implements SectionService {
 
 	}
 
+
 	public void addSectionsToBlock(Block block) {
-		for(int i=1; i<8; i++) {
-			Section section = new Section();
-			section.setSectionName("FPP");
-			section.setStudentLimit((long) 25);
-			section.setBlock(block);
-			
-			this.save(section);
-			block.getSectionList().add(section);
+
+		String blockName = block.getBlockName();
+		int noFPP = block.getSchedule().getEntry().getNoOfFppStudents();
+		int noMpp = block.getSchedule().getEntry().getNoOfMppStudents();
+
+		switch(blockName) {
+		// ALL SCI Blocks
+		case "Block 1" : {
+			int n = (noFPP + noMpp) / 25;
+			Course course = courseService.getCourseBycourseName("FPP");
+			Faculty faculty = facultyService.getFacultyById((long) 1);
+			for(int i=0; i<=n; i++) {
+				this.saveSectionInBlock(course, faculty, block);
+			}
 		}
-		
+
+		}
 	}
-	
+
+	protected void saveSectionInBlock(Course course, Faculty faculty, Block block) {
+		Section section = new Section();
+		section.setSectionName(course.getCourseName() + "( " + faculty.getFullName() + " )");
+		section.setBlock(block);
+		section.setCourse(course);
+		section.setFaculty(faculty);
+		this.save(section);
+		block.getSectionList().add(section);
+	}
+
+	//	public void addSectionsToBlock(Block block) {
+	//		for(int i=1; i<8; i++) {
+	//			Section section = new Section();
+	//			section.setSectionName("FPP");
+	//			section.setStudentLimit((long) 25);
+	//			section.setBlock(block);
+	//			
+	//			this.save(section);
+	//			block.getSectionList().add(section);
+	//		}
+	//		
+	//	}
+
 }

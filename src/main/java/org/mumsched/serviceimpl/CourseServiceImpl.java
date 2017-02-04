@@ -36,5 +36,14 @@ public class CourseServiceImpl implements CourseService {
 		courserepository.delete(courseId);
 
 	}
+	
+	public Course getCourseBycourseName(String courseName) {
+		for(Course course: this.getAllCourse()) {
+			if(course.getCourseName().equals(courseName)) {
+				return course;
+			}
+		}
+		return null;
+	}
 
 }
