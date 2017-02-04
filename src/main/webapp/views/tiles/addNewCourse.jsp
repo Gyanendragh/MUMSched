@@ -25,14 +25,20 @@ body {
 
 			<tr>
 				<td>Course Name</td>
-				<td><form:input path="cname" type="text" /></td>
-				<td><form:errors path="cname" cssStyle="color:red;"></form:errors>
+				<td><form:input path="courseName" type="text" /></td>
+				<td><form:errors path="courseName" cssStyle="color:red;"></form:errors>
 				</td>
 			</tr>
 			<tr>
 				<td>Course Number</td>
-				<td><form:input path="cnumber" type="text" /></td>
-				<td><form:errors path="cnumber" cssStyle="color:red;"></form:errors>
+				<td><form:input path="courseNumber" type="text" /></td>
+				<td><form:errors path="courseNumber" cssStyle="color:red;"></form:errors>
+				</td>
+			</tr>
+			<tr>
+				<td>Course Level</td>
+				<td><form:input path="courseLevel" type="text" /></td>
+				<td><form:errors path="courseLevel" cssStyle="color:red;"></form:errors>
 				</td>
 			</tr>
 			<tr>
@@ -75,6 +81,7 @@ body {
 			<tr>
 				<td>Course Name</td>
 				<td>Course Number</td>
+				<td>Course Level</td>
 				<td>Prerequisites</td>
 				<td>Faculties</td>
 				<td>&nbsp;</td>
@@ -85,9 +92,11 @@ body {
 			<tbody>
 				<tr>
 
-					<td>${course.cname}</td>
+					<td>${course.courseName}</td>
 
-					<td>${course.cnumber}</td>
+					<td>${course.courseNumber}</td>
+					
+					<td>${course.courseLevel}</td>
 
 					<td>${course.prerequisites}</td>
 
