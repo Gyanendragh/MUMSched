@@ -20,12 +20,11 @@
 					<tr>
 						<td>${block.blockName}
 							<ul class="list-group">
-							<c:forEach var="section" items="${block.sectionList}">
-								<li class="list-group-item">"${section.sectionName}"</li>
-							</c:forEach>
+								<c:forEach var="section" items="${block.sectionList}">
+									<li class="list-group-item">${section.sectionName}</li>
+								</c:forEach>
 							</ul>
 						</td>
-
 					</tr>
 				</c:forEach>
 

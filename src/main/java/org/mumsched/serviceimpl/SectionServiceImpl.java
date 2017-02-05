@@ -51,17 +51,32 @@ public class SectionServiceImpl implements SectionService {
 	public void addSectionsToBlock(Block block) {
 
 		String blockName = block.getBlockName();
-		int noFPP = block.getSchedule().getEntry().getNoOfFppStudents();
-		int noMpp = block.getSchedule().getEntry().getNoOfMppStudents();
+		int numberOfFpp = block.getSchedule().getEntry().getNoOfFppStudents();
+		int numberOfMpp = block.getSchedule().getEntry().getNoOfMppStudents();
 
+		Course course;
+		List<Faculty> facultyList;
+		
 		switch(blockName) {
 		// ALL SCI Blocks
 		case "Block 1" : 
-			int n = (noFPP + noMpp) / 25;
-			Course course = courseService.getCourseBycourseName("SCI");
-			List<Faculty> facultyList = facultyService.getFacultyByCourse(course);
+			int n = (numberOfFpp + numberOfMpp) / 25;
+			course = courseService.getCourseBycourseName("SCI");
+			facultyList = facultyService.getFacultyByCourse(course);
 		
 			for(int i=0; i<=n; i++) {
+				this.saveSectionInBlock(course, facultyList.get(i), block);
+			}
+			break;
+		case "Block 2" :
+			course = courseService.getCourseBycourseName("FPP");
+			facultyList = facultyService.getFacultyByCourse(course);
+		
+			for(int i=0; i<=numberOfFpp/25; i++) {
+				this.saveSectionInBlock(course, facultyList.get(i), block);
+			}
+			course = courseService.getCourseBycourseName("MPP");
+			for(int i=0; i<=numberOfMpp/25; i++) {
 				this.saveSectionInBlock(course, facultyList.get(i), block);
 			}
 			break;
@@ -78,18 +93,5 @@ public class SectionServiceImpl implements SectionService {
 		this.save(section);
 		block.getSectionList().add(section);
 	}
-
-	//	public void addSectionsToBlock(Block block) {
-	//		for(int i=1; i<8; i++) {
-	//			Section section = new Section();
-	//			section.setSectionName("FPP");
-	//			section.setStudentLimit((long) 25);
-	//			section.setBlock(block);
-	//			
-	//			this.save(section);
-	//			block.getSectionList().add(section);
-	//		}
-	//		
-	//	}
 
 }
