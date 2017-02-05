@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.OrderBy;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -27,6 +28,7 @@ public class Schedule {
 	private Entry entry;
 
 	@OneToMany(mappedBy="schedule", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OrderBy("blockId")
 	private Set<Block> blockList = new HashSet<>();
 	
 	public Long getId() {
