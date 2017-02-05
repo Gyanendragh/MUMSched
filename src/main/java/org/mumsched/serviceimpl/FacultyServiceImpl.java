@@ -1,7 +1,9 @@
 package org.mumsched.serviceimpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.mumsched.domain.Course;
 import org.mumsched.domain.Faculty;
 import org.mumsched.repositories.FacultyRepository;
 import org.mumsched.service.FacultyService;
@@ -37,6 +39,23 @@ public class FacultyServiceImpl implements FacultyService {
 	public void delete(Long facultyId) {
 		facultyrepository.delete(facultyId);
 
+	}
+
+	public List<Faculty> getFacultyByCourse(Course course) {
+		// TO DO Generate Random Faculty
+		List<Faculty> facultyList = this.getAllFaculty();
+		List<Faculty> facultyListResult = new ArrayList<>();
+		
+		for(Faculty faculty : facultyList) {
+			for(Course preferedCourse : faculty.getPreferCourse()) {
+				if(preferedCourse.getCourseId() == course.getCourseId()) {
+					facultyListResult.add(faculty);
+				}
+				
+			}
+		}
+		
+		return facultyListResult;
 	}
 
 	

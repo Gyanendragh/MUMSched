@@ -56,14 +56,15 @@ public class SectionServiceImpl implements SectionService {
 
 		switch(blockName) {
 		// ALL SCI Blocks
-		case "Block 1" : {
+		case "Block 1" : 
 			int n = (noFPP + noMpp) / 25;
-			Course course = courseService.getCourseBycourseName("FPP");
-			Faculty faculty = facultyService.getFacultyById((long) 1);
+			Course course = courseService.getCourseBycourseName("SCI");
+			List<Faculty> facultyList = facultyService.getFacultyByCourse(course);
+		
 			for(int i=0; i<=n; i++) {
-				this.saveSectionInBlock(course, faculty, block);
+				this.saveSectionInBlock(course, facultyList.get(i), block);
 			}
-		}
+			break;
 
 		}
 	}

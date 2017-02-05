@@ -13,19 +13,24 @@
 	</jsp:include>
 
 	<div class="panel panel-info">
-		<div class="panel-heading">Schedule</div>
-		<div class="panel-body"></div>
-		<table class="table">
-			<tr>
-				<td colspan="2">${schedule.name}</td>
+		<div class="panel-heading">${schedule.name}</div>
+		<div class="panel-body">
+			<table class="table">
 				<c:forEach var="block" items="${schedule.blockList}">
 					<tr>
-						<td>${block.blockName }</td>
+						<td>${block.blockName}
+							<ul class="list-group">
+							<c:forEach var="section" items="${block.sectionList}">
+								<li class="list-group-item">"${section.sectionName}"</li>
+							</c:forEach>
+							</ul>
+						</td>
+
 					</tr>
 				</c:forEach>
 
-			</tr>
-		</table>
+			</table>
+		</div>
 	</div>
 </body>
 </html>

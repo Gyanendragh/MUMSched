@@ -1,7 +1,7 @@
 package org.mumsched.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -38,7 +38,8 @@ public class Course {
 	private String courseLevel;
 	
 	@OneToMany(mappedBy="course")
-	private List<Section> sectionList = new ArrayList<>();
+	private Set<Section> sectionList = new HashSet<>();
+//	private List<Section> sectionList = new ArrayList<>();
 
 	public String getLevel() {
 		return courseLevel;
@@ -77,10 +78,10 @@ public class Course {
 		this.courseId = courseId;
 	}
 
-	public List<Section> getSectionList() {
+	public Set<Section> getSectionList() {
 		return sectionList;
 	}
-	public void setSectionList(List<Section> sectionList) {
+	public void setSectionList(Set<Section> sectionList) {
 		this.sectionList = sectionList;
 	}
 	public String getCname() {

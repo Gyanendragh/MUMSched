@@ -1,7 +1,7 @@
 package org.mumsched.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -25,11 +25,20 @@ public class Block {
 	@JoinColumn(name="schedule_id")
 	private Schedule schedule;
 
-	@OneToMany(mappedBy="block", cascade = CascadeType.ALL)
-	private List<Section> sectionList = new ArrayList<>();
+	@OneToMany(mappedBy="block", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private Set<Section> sectionList = new HashSet<>();
+//	private List<Section> sectionList = new ArrayList<>();
 
 	public Long getBlockId() {
 		return blockId;
+	}
+
+	public Set<Section> getSectionList() {
+		return sectionList;
+	}
+
+	public void setSectionList(Set<Section> sectionList) {
+		this.sectionList = sectionList;
 	}
 
 	public void setBlockId(Long blockId) {
@@ -52,12 +61,6 @@ public class Block {
 		this.schedule = schedule;
 	}
 
-	public List<Section> getSectionList() {
-		return sectionList;
-	}
-
-	public void setSectionList(List<Section> sectionList) {
-		this.sectionList = sectionList;
-	}
+	
 
 }

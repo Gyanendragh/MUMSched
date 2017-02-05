@@ -1,9 +1,10 @@
 package org.mumsched.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,35 +22,37 @@ public class Faculty {
 	private String fullName;
 	
 	@OneToMany(mappedBy="faculty")
-	private List<Section> section = new ArrayList<>();
+	private Set<Section> section = new HashSet<>();
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name="course_faculty",
 		joinColumns = @JoinColumn(name = "faculty_id"), 
 		inverseJoinColumns = @JoinColumn(name = "course_id" ))
-	private List<Course> preferCourse = new ArrayList<>();
+	private Set<Course> preferCourse = new HashSet<>();
 
 	public Long getFacultyId() {
 		return facultyId;
 	}
 
-	public List<Course> getPreferCourse() {
+	public Set<Course> getPreferCourse() {
 		return preferCourse;
 	}
 
-	public void setPreferCourse(List<Course> preferCourse) {
+
+	public void setPreferCourse(Set<Course> preferCourse) {
 		this.preferCourse = preferCourse;
 	}
+
 
 	public void setFacultyId(Long facultyId) {
 		this.facultyId = facultyId;
 	}
 
-	public List<Section> getSection() {
+	public Set<Section> getSection() {
 		return section;
 	}
 
-	public void setSection(List<Section> section) {
+	public void setSection(Set<Section> section) {
 		this.section = section;
 	}
 
