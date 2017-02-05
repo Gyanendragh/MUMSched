@@ -35,6 +35,11 @@ INSERT INTO faculty(facultyId, fullName) VALUES (17, "Frank");
 INSERT INTO faculty(facultyId, fullName) VALUES (18, "Khan");
 INSERT INTO faculty(facultyId, fullName) VALUES (19, "Guthrie");
 INSERT INTO faculty(facultyId, fullName) VALUES (20, "Mukadam");
+INSERT INTO faculty(facultyId, fullName) VALUES (21, "SCI_Faculty");
+INSERT INTO faculty(facultyId, fullName) VALUES (22, "SCI_Faculty");
+INSERT INTO faculty(facultyId, fullName) VALUES (23, "SCI_Faculty");
+INSERT INTO faculty(facultyId, fullName) VALUES (24, "SCI_Faculty");
+INSERT INTO faculty(facultyId, fullName) VALUES (25, "SCI_Faculty");
 
 
 INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (1,"FPP","CS380",'400',NULL);
@@ -48,3 +53,33 @@ INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id
 INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (9,"BD","CS525",'500',NULL);
 INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (10,"BDA","CS520",'500',NULL);
 INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (11,"MWA","CS522",'500',5);
+INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (12,"SCI","CS500",'500',NULL);
+
+
+
+INSERT INTO course_faculty(course_id, faculty_id) VALUES(1, 1);
+INSERT INTO course_faculty(course_id, faculty_id) VALUES(1, 2);
+INSERT INTO course_faculty(course_id, faculty_id) VALUES(1, 3);
+INSERT INTO course_faculty(course_id, faculty_id) VALUES(2, 1);
+INSERT INTO course_faculty(course_id, faculty_id) VALUES(2, 2);
+INSERT INTO course_faculty(course_id, faculty_id) VALUES(2, 3);
+INSERT INTO course_faculty(course_id, faculty_id) VALUES(5, 9);
+INSERT INTO course_faculty(course_id, faculty_id) VALUES(6, 4);
+INSERT INTO course_faculty(course_id, faculty_id) VALUES(6, 7);
+INSERT INTO course_faculty(course_id, faculty_id) VALUES(6, 11);
+INSERT INTO course_faculty(course_id, faculty_id) VALUES(7, 4);
+INSERT INTO course_faculty(course_id, faculty_id) VALUES(7, 10);
+INSERT INTO course_faculty(course_id, faculty_id) VALUES(7, 11);
+INSERT INTO course_faculty(course_id, faculty_id) VALUES(11, 8);
+INSERT INTO course_faculty(course_id, faculty_id) VALUES(12, 5);
+INSERT INTO course_faculty(course_id, faculty_id) VALUES(12, 6);
+INSERT INTO course_faculty(course_id, faculty_id) VALUES(3, 15);
+INSERT INTO course_faculty(course_id, faculty_id) VALUES(4, 18);
+INSERT INTO course_faculty(course_id, faculty_id) VALUES(8, 19);
+INSERT INTO course_faculty(course_id, faculty_id) VALUES(9, 20);
+INSERT INTO course_faculty(course_id, faculty_id) VALUES(10, 20);
+INSERT INTO course_faculty(course_id, faculty_id) VALUES(12, 21);
+INSERT INTO course_faculty(course_id, faculty_id) VALUES(12, 22);
+INSERT INTO course_faculty(course_id, faculty_id) VALUES(12, 23);
+INSERT INTO course_faculty(course_id, faculty_id) VALUES(12, 24);
+INSERT INTO course_faculty(course_id, faculty_id) VALUES(12, 25);
