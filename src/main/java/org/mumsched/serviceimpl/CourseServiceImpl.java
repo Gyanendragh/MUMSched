@@ -1,5 +1,6 @@
 package org.mumsched.serviceimpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.mumsched.domain.Course;
@@ -44,6 +45,16 @@ public class CourseServiceImpl implements CourseService {
 			}
 		}
 		return null;
+	}
+
+	public List<Course> getCourseBycourseLevel(String level) {
+		List<Course> courseList = new ArrayList<>();
+		for(Course course: this.getAllCourse()) {
+			if(course.getCourseLevel().equals(level)) {
+				courseList.add(course);
+			}
+		}
+		return courseList;
 	}
 
 }

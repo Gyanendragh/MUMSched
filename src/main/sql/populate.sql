@@ -51,8 +51,8 @@ INSERT INTO faculty(facultyId, fullName) VALUES (33, "MPP_Faculty2");
 INSERT INTO faculty(facultyId, fullName) VALUES (34, "MPP_Faculty3");
 
 
-INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (1,"FPP","CS380",'400',NULL);
-INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (2,"MPP","CS400",'400',NULL);
+INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (1,"FPP","CS380",'300',NULL);
+INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (2,"MPP","CS400",'300',NULL);
 INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (3,"SWE","CS425",'400',NULL);
 INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (4,"Algorithm","CS435",'400',NULL);
 INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (5,"WAP","CS440",'400',NULL);
@@ -63,6 +63,9 @@ INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id
 INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (10,"BDA","CS520",'500',NULL);
 INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (11,"MWA","CS522",'500',5);
 INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (12,"SCI","CS500",'500',NULL);
+INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (13,"ML","CS420",'400',NULL);
+INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (14,"Course1","CS430",'400',NULL);
+INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (15,"Course2","CS406",'400',NULL);
 
 
 

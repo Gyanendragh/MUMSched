@@ -1,5 +1,6 @@
 package org.mumsched.serviceimpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.mumsched.domain.Block;
@@ -51,35 +52,120 @@ public class SectionServiceImpl implements SectionService {
 	public void addSectionsToBlock(Block block) {
 
 		String blockName = block.getBlockName();
-		int numberOfFpp = block.getSchedule().getEntry().getNoOfFppStudents();
-		int numberOfMpp = block.getSchedule().getEntry().getNoOfMppStudents();
-
-		Course course;
-		List<Faculty> facultyList;
+		int numberOfFpp = block.getSchedule().getEntry().getNoOfFppStudents()/25;
+		int numberOfMpp = block.getSchedule().getEntry().getNoOfMppStudents()/25;
+		int total = numberOfFpp + numberOfMpp;
 		
+		List<Course> courseList = new ArrayList<>();
+		List<Faculty> facultyList = new ArrayList<>();
+
 		switch(blockName) {
 		// ALL SCI Blocks
 		case "Block 1" : 
-			int n = (numberOfFpp + numberOfMpp) / 25;
-			course = courseService.getCourseBycourseName("SCI");
-			facultyList = facultyService.getFacultyByCourse(course);
-		
-			for(int i=0; i<=n; i++) {
-				this.saveSectionInBlock(course, facultyList.get(i), block);
+			courseList.add(courseService.getCourseBycourseName("SCI"));
+
+			for(Course course: courseList) {
+				facultyList = facultyService.getFacultyByCourse(course);
+				for(Faculty faculty : facultyList) {
+					this.saveSectionInBlock(course, faculty, block);
+					if(total == 0) {
+						break;
+					}
+					total--;
+				}
 			}
+			courseList.clear();
+			facultyList.clear();
 			break;
+
+		// FPP and MPP
 		case "Block 2" :
-			course = courseService.getCourseBycourseName("FPP");
-			facultyList = facultyService.getFacultyByCourse(course);
-		
-			for(int i=0; i<=numberOfFpp/25; i++) {
-				this.saveSectionInBlock(course, facultyList.get(i), block);
+			Course courseFPP = courseService.getCourseBycourseName("FPP");
+			facultyList = facultyService.getFacultyByCourse(courseFPP);
+			for(Faculty faculty : facultyList) {
+				this.saveSectionInBlock(courseFPP, faculty, block);
+				if(numberOfFpp == 0) {
+					break;
+				}
+				numberOfFpp--;
 			}
-			course = courseService.getCourseBycourseName("MPP");
-			for(int i=0; i<=numberOfMpp/25; i++) {
-				this.saveSectionInBlock(course, facultyList.get(i), block);
+			courseList.clear();
+			facultyList.clear();
+
+			Course courseMPP = courseService.getCourseBycourseName("MPP");
+			facultyList = facultyService.getFacultyByCourse(courseMPP);
+			for(Faculty faculty : facultyList) {
+				this.saveSectionInBlock(courseMPP, faculty, block);
+				if(numberOfMpp == 0) {
+					break;
+				}
+				numberOfMpp--;
 			}
+			facultyList.clear();
 			break;
+		// MPP and ELECTIVE
+		case "Block 3" :
+			courseMPP = courseService.getCourseBycourseName("MPP");
+			facultyList = facultyService.getFacultyByCourse(courseMPP);
+			for(Faculty faculty : facultyList) {
+				this.saveSectionInBlock(courseMPP, faculty, block);
+				if(numberOfFpp == 0) {
+					break;
+				}
+				numberOfFpp--;
+			}
+			courseList.clear();
+			facultyList.clear();
+			
+
+			courseList.addAll(courseService.getCourseBycourseLevel("400"));
+
+			for(Course course: courseList) {
+				facultyList = facultyService.getFacultyByCourse(course);
+				for(Faculty faculty : facultyList) {
+					this.saveSectionInBlock(course, faculty, block);
+					if(numberOfMpp == 0) {
+						break;
+					}
+					numberOfMpp--;
+				}
+			}
+			courseList.clear();
+			facultyList.clear();
+			break;
+			
+		// Elective
+		case "Block 4" :
+			courseList.addAll(courseService.getCourseBycourseLevel("400"));
+
+			for(Course course: courseList) {
+				facultyList = facultyService.getFacultyByCourse(course);
+				for(Faculty faculty : facultyList) {
+					this.saveSectionInBlock(course, faculty, block);
+					if(numberOfFpp == 0) {
+						break;
+					}
+					numberOfFpp--;
+				}
+			}
+			courseList.clear();
+			facultyList.clear();
+			courseList.addAll(courseService.getCourseBycourseLevel("500"));
+
+			for(Course course: courseList) {
+				facultyList = facultyService.getFacultyByCourse(course);
+				for(Faculty faculty : facultyList) {
+					this.saveSectionInBlock(course, faculty, block);
+					if(numberOfMpp == 0) {
+						break;
+					}
+					numberOfMpp--;
+				}
+			}
+			courseList.clear();
+			facultyList.clear();
+			break;
+
 
 		}
 	}
@@ -93,5 +179,17 @@ public class SectionServiceImpl implements SectionService {
 		this.save(section);
 		block.getSectionList().add(section);
 	}
+
+	protected List<Faculty> removeDuplicateFaculty(List<Course> courseList) {
+		// TO DO
+		List<Faculty> facultyList = new ArrayList<>(); 
+//		for(Course course : courseList) {
+//			facultyList.get
+//			facultyList.add()
+//			
+//		}
+		return facultyList;
+	}
+
 
 }
