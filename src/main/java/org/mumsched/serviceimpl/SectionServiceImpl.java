@@ -153,20 +153,5 @@ public class SectionServiceImpl implements SectionService {
 			this.saveSectionInBlock(sectionList.get(i), block);
 		}
 	}
-	
-	protected boolean checkIfUnique(Section checkSection, Block block) {
-		List<Section> sectionList = new ArrayList<>();
-		for(Section section: this.getAllSections()) {
-			if(section.getBlock().getBlockId() == block.getBlockId()) {
-				sectionList.add(section);
-			}
-		}
-
-		if(sectionList.contains(checkSection)) {
-			return false;
-		} else {
-			return true;
-		}
-	}
 
 }
