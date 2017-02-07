@@ -97,22 +97,22 @@ public class SectionServiceImpl implements SectionService {
 			break;
 		// Elective
 		case "Block 4" :
-			mpp = courseService.getCourseBycourseName("MPP");
-			facultyList = facultyService.getFacultyByCourse(mpp);
-			for(int i=0; i<(Math.min(facultyList.size(), numberOfFpp)); i++) {
-				this.saveSectionInBlock(mpp, facultyList.get(i), block);
-			}
-			
 			this.saveSectionByLevel(block, "400");
+			this.saveSectionByLevel(block, "500");
 			break;
 
 		case "Block 5" :
+			this.saveSectionByLevel(block, "400");
+			this.saveSectionByLevel(block, "500");
 			break;
 		
 		case "Block 6" :
+			this.saveSectionByLevel(block, "400");
+			this.saveSectionByLevel(block, "500");
 			break;
 
 		case "Block 7" :
+			this.saveSectionByLevel(block, "500");
 			break;
 
 

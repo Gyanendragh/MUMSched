@@ -62,7 +62,7 @@ INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id
 INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (9,"BD","CS525",'500',NULL);
 INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (10,"BDA","CS520",'500',NULL);
 INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (11,"MWA","CS522",'500',5);
-INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (12,"SCI","CS500",'500',NULL);
+INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (12,"SCI","CS500",'300',NULL);
 INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (13,"ML","CS420",'400',NULL);
 INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (14,"Course1","CS430",'400',NULL);
 INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (15,"Course2","CS406",'400',NULL);
