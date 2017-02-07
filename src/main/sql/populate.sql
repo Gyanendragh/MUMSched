@@ -108,6 +108,11 @@ INSERT INTO course_faculty(course_id, faculty_id) VALUES(9, 20);
 INSERT INTO course_faculty(course_id, faculty_id) VALUES(10, 20);
 INSERT INTO course_faculty(course_id, faculty_id) VALUES(11, 8);
 
+INSERT INTO course_faculty(course_id, faculty_id) VALUES(13, 7);
+INSERT INTO course_faculty(course_id, faculty_id) VALUES(13, 9);
+INSERT INTO course_faculty(course_id, faculty_id) VALUES(14, 8);
+INSERT INTO course_faculty(course_id, faculty_id) VALUES(15, 8);
+
 
 
 

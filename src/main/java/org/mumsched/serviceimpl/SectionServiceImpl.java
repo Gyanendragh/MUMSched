@@ -52,8 +52,8 @@ public class SectionServiceImpl implements SectionService {
 	public void addSectionsToBlock(Block block) {
 
 		String blockName = block.getBlockName();
-		int numberOfFpp = block.getSchedule().getEntry().getNoOfFppStudents()/25;
-		int numberOfMpp = block.getSchedule().getEntry().getNoOfMppStudents()/25;
+		int numberOfFpp = (block.getSchedule().getEntry().getNoOfFppStudents()/25)+1;
+		int numberOfMpp = (block.getSchedule().getEntry().getNoOfMppStudents()/25)+1;
 		int total = numberOfFpp + numberOfMpp;
 		
 		List<Faculty> facultyList = new ArrayList<>();
@@ -92,27 +92,27 @@ public class SectionServiceImpl implements SectionService {
 				this.saveSectionInBlock(mpp, facultyList.get(i), block);
 			}
 			
-			this.saveSectionByLevel(block, "400");
+			this.saveSectionByLevel(block, "400", numberOfMpp);
 			
 			break;
 		// Elective
 		case "Block 4" :
-			this.saveSectionByLevel(block, "400");
-			this.saveSectionByLevel(block, "500");
+			this.saveSectionByLevel(block, "400", numberOfFpp);
+			this.saveSectionByLevel(block, "500", numberOfMpp);
 			break;
 
 		case "Block 5" :
-			this.saveSectionByLevel(block, "400");
-			this.saveSectionByLevel(block, "500");
+			this.saveSectionByLevel(block, "400", numberOfFpp);
+			this.saveSectionByLevel(block, "500", numberOfMpp);
 			break;
 		
 		case "Block 6" :
-			this.saveSectionByLevel(block, "400");
-			this.saveSectionByLevel(block, "500");
+			this.saveSectionByLevel(block, "400", numberOfFpp);
+			this.saveSectionByLevel(block, "500", numberOfMpp);
 			break;
 
 		case "Block 7" :
-			this.saveSectionByLevel(block, "500");
+			this.saveSectionByLevel(block, "500", numberOfFpp);
 			break;
 
 
@@ -128,6 +128,12 @@ public class SectionServiceImpl implements SectionService {
 		this.save(section);
 		block.getSectionList().add(section);
 	}
+	
+	protected void saveSectionInBlock(Section section, Block block) {
+		this.save(section);
+		block.getSectionList().add(section);
+	}
+
 
 	protected List<Faculty> removeDuplicateFaculty(List<Course> courseList) {
 		// TO DO
@@ -135,16 +141,29 @@ public class SectionServiceImpl implements SectionService {
 		return facultyList;
 	}
 	
-	protected void saveSectionByLevel(Block block, String level) {
+	protected void saveSectionByLevel(Block block, String level, int count) {
 		List<Course> electiveList = new ArrayList<>();
 		List<Faculty> facultyList = new ArrayList<>();
+		List<Section> sectionList = new ArrayList<>();
 		electiveList = courseService.getCourseBycourseLevel(level);
 		
 		for(Course course : electiveList) {
 			facultyList = facultyService.getFacultyByCourse(course);
 			for(Faculty faculty : facultyList) {
-				this.saveSectionInBlock(course, faculty, block);
+				
+				Section section = new Section();
+				section.setSectionName(course.getCourseName() + "( " + faculty.getFullName() + " )");
+				section.setBlock(block);
+				section.setCourse(course);
+				section.setFaculty(faculty);
+			
+				sectionList.add(section);
+				
 			}
+		}
+		
+		for(int i=0; i<(Math.min(sectionList.size(), count)); i++) {
+			this.saveSectionInBlock(sectionList.get(i), block);
 		}
 	}
 
