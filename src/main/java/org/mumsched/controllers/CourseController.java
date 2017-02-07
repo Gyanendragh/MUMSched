@@ -41,7 +41,7 @@ public class CourseController {
 		if(result.hasErrors()){
 			return "courseAddForm";
 		}else{
-			courseservice.save(courseObj);
+			courseservice.saveCourse(courseObj);
 			return "redirect:/course/add";
 		}
 	}

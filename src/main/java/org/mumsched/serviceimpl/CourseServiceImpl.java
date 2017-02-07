@@ -57,4 +57,9 @@ public class CourseServiceImpl implements CourseService {
 		return courseList;
 	}
 
+	public void saveCourse(Course courseObj) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
