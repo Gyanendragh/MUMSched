@@ -47,7 +47,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 		Schedule schedule = new Schedule();
 
 		schedule.setEntry(entry);
-		schedule.setName("Schedule for " + entry.getEname());
+		schedule.setName("Schedule for " + entry.getEntryName());
 		this.save(schedule);
 		
 		//Add Blocks to Schedule

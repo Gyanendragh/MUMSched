@@ -22,14 +22,14 @@ body {
 	
 		<tr>
 			<td>Entry Name</td>
-			<td><form:input path="ename" type="text" /></td>
-			<td><form:errors path="ename" cssStyle="color:red;"></form:errors>
+			<td><form:input path="entryName" type="text" /></td>
+			<td><form:errors path="entryName" cssStyle="color:red;"></form:errors>
 			</td>
 		</tr>
 		<tr>
 			<td>Entry Year </td>
-			<td><form:input path="eyear" type="text" /></td>
-			<td><form:errors path="eyear" cssStyle="color:red;"></form:errors>
+			<td><form:input path="entryYear" type="text" /></td>
+			<td><form:errors path="entryYear" cssStyle="color:red;"></form:errors>
 			</td>			
 		</tr>
 		<tr>
@@ -79,9 +79,9 @@ body {
 	   <tbody>
 		<tr>
 			
-			<td>${entry.ename}</td>
+			<td>${entry.entryName}</td>
 
-			<td>${entry.eyear}</td>
+			<td>${entry.entryYear}</td>
 			
 			<td>${entry.noOfFppStudents}</td>
 			
@@ -93,8 +93,8 @@ body {
 			
 
 
-			<td><a href="<spring:url value="/entry/edit/${entry.id}"/>">Edit</a> | <a
-				href="<spring:url value="/entry/delete/${entry.id}"/>">Delete</a></td>
+			<td><a href="<spring:url value="/entry/edit/${entry.entryId}"/>">Edit</a> | <a
+				href="<spring:url value="/entry/delete/${entry.entryId}"/>">Delete</a></td>
 
 		</tr>
 		</tbody>

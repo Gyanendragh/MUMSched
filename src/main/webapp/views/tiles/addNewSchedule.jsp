@@ -28,9 +28,10 @@ body {
 					<td><form:select path="name">
 							<form:option value="NONE" label="--- Select Entry ---" />
 							<c:forEach var="entry" items="${entryList}">
-								<form:option value="${entry.id}" label="${entry.ename}" />
+								<form:option value="${entry.entryId}" label="${entry.entryName}" />
 							</c:forEach>
-						</form:select></td>
+						</form:select>
+					</td>
 					<td>
 						<button>Create Schedule</button>
 					</td>

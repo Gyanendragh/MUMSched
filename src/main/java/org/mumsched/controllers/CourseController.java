@@ -3,8 +3,7 @@ package org.mumsched.controllers;
 import java.util.List;
 
 import org.mumsched.domain.Course;
-import org.mumsched.service.CourseService;
-import org.mumsched.service.FacultyService;
+import org.mumsched.serviceimpl.CourseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,14 +18,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping(value="/course")
 public class CourseController {
 	@Autowired
-	CourseService courseservice;
-	@Autowired
-	FacultyService facultyservice;
+	CourseServiceImpl courseservice;
 
 	@RequestMapping(value={"/add"},method=RequestMethod.GET)
 	public String getForm(@ModelAttribute("newCourse") Course course,Model model){
-		/*model.addAttribute("facultyList", this.getFacultyName());
-		System.out.println("...");*/
+		model.addAttribute("courseLists", courseservice.getAllCourse());
 		return "courseAddForm";
 	}
 

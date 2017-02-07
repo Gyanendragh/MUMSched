@@ -42,28 +42,15 @@ body {
 				</td>
 			</tr>
 			<tr>
-				<td>Course Prerequisites</td>
-				<td><select name="prerequisites">
-						<option value="">--Select Option--</option>
-						<option value="mpp">Modern Application Programming</option>
-						<option value="wap">Wave Application Programming</option>
-						<option value="dbms">Database Management system</option>
-						<option value="swe">Software Engineer</option>
-				</select></td>
-			</tr>
-			<tr>
-				<td>Faculties</td>
-				<td><input type="checkbox" name="faculty" value="Nolle" />Pro
-					Nolle <input type="checkbox" name="faculty" value="Arrocha" />Pro
-					Arrocha <input type="checkbox" name="faculty" value="Lerman" />Pro
-					Lerman <input type="checkbox" name="faculty" value="Saad" />Pro
-					Saad <input type="checkbox" name="faculty" value="Bruen" />Pro
-					Bruen <input type="checkbox" name="faculty" value="Ruby" />Pro
-					Ruby <input type="checkbox" name="faculty" value="Renuka" />Pro
-					Renuka <input type="checkbox" name="faculty" value="Renuka" />Pro
-					Chrish</td>
-				<td><form:errors path="faculty" cssClass="error"></form:errors></td>
-			</tr>
+				<td>Prerequisite</td>
+				<td><form:select path="prerequisite">
+							<form:option value="" label="--- Select Course ---" />
+							<c:forEach var="course" items="${courseLists}">
+								<form:option value="${course.courseId}" label="${course.courseName}" />
+							</c:forEach>
+						</form:select>
+				</td>
+			</tr> 
 			<tr>
 				<td></td>
 				<td>
@@ -83,7 +70,6 @@ body {
 				<td>Course Number</td>
 				<td>Course Level</td>
 				<td>Prerequisites</td>
-				<td>Faculties</td>
 				<td>&nbsp;</td>
 
 			</tr>
@@ -98,9 +84,7 @@ body {
 					
 					<td>${course.courseLevel}</td>
 
-					<td>${course.prerequisites}</td>
-
-					<td>${course.faculty}</td>
+					<td>${course.prerequisite.courseName}</td>
 
 
 

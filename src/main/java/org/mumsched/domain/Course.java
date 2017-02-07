@@ -39,7 +39,6 @@ public class Course {
 	
 	@OneToMany(mappedBy="course")
 	private Set<Section> sectionList = new HashSet<>();
-//	private List<Section> sectionList = new ArrayList<>();
 
 	public String getLevel() {
 		return courseLevel;

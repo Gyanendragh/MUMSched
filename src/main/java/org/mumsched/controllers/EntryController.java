@@ -36,26 +36,26 @@ public class EntryController {
 		}
 	}
 	
-	@RequestMapping(value="/edit/{id}", method=RequestMethod.GET)
-	public String get(@PathVariable long id, Model model) {
-		model.addAttribute("editEntry", entryservice.getEntryById(id));
+	@RequestMapping(value="/edit/{entryId}", method=RequestMethod.GET)
+	public String get(@PathVariable long entryId, Model model) {
+		model.addAttribute("editEntry", entryservice.getEntryById(entryId));
 		return "entryEditForm";
 	}
 	
-	@RequestMapping(value="/edit/{id}", method=RequestMethod.POST)
-	public String update(Entry entry, @PathVariable long id, @ModelAttribute("editEntry") @Validated Entry editEntry, BindingResult result, Model model) {
+	@RequestMapping(value="/edit/{entryId}", method=RequestMethod.POST)
+	public String update(Entry entry, @PathVariable long entryId, @ModelAttribute("editEntry") @Validated Entry editEntry, BindingResult result, Model model) {
 		if(result.hasErrors()){
 			return"entryEditForm";
 		}else{
-		entry.setId(id);
+		entry.setEntryId(entryId);
 		entryservice.save(editEntry);
 		return "redirect:/entry/add";
 		}
 	}
 	
-	@RequestMapping(value="/delete/{id}", method=RequestMethod.GET)
-	public String delete(@PathVariable("id") Long id) {
-		entryservice.delete(id);
+	@RequestMapping(value="/delete/{entryId}", method=RequestMethod.GET)
+	public String delete(@PathVariable("entryId") Long entryId) {
+		entryservice.delete(entryId);
 		return "redirect:/entry/add";
 	}
 	

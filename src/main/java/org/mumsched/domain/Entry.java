@@ -16,15 +16,15 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class Entry {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+	private Long entryId;
 	
 	@Column(unique = true)
     @Size(min=2, max=10)
 	@NotEmpty(message="no empty field accepted")
-	private String ename;
+	private String entryName;
     
 	@NotNull @Min(2017) @Max(2020)
-	private String eyear;
+	private String entryYear;
     
 	@NotNull @Min(25) @Max(200)
 	private int noOfFppStudents;
@@ -53,23 +53,24 @@ public class Entry {
 	public void setNoOfUsResident(int noOfUsResident) {
 		this.noOfUsResident = noOfUsResident;
 	}
-	public Long getId() {
-		return id;
+	public Long getEntryId() {
+		return entryId;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setEntryId(Long entryId) {
+		this.entryId = entryId;
 	}
-	public String getEname() {
-		return ename;
+	public String getEntryName() {
+		return entryName;
 	}
-	public String getEyear() {
-		return eyear;
+	public void setEntryName(String entryName) {
+		this.entryName = entryName;
 	}
-	public void setEyear(String eyear) {
-		this.eyear = eyear;
+	public String getEntryYear() {
+		return entryYear;
 	}
-	public void setEname(String ename) {
-		this.ename = ename;
+	public void setEntryYear(String entryYear) {
+		this.entryYear = entryYear;
 	}
+	
 	
 }
