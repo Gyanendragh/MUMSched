@@ -130,15 +130,10 @@ public class SectionServiceImpl implements SectionService {
 	}
 	
 	protected void saveSectionInBlock(Section section, Block block) {
-		this.save(section);
-		block.getSectionList().add(section);
-	}
-
-
-	protected List<Faculty> removeDuplicateFaculty(List<Course> courseList) {
-		// TO DO
-		List<Faculty> facultyList = new ArrayList<>(); 
-		return facultyList;
+		if(this.checkIfUnique(section, block)) {
+			this.save(section);
+			block.getSectionList().add(section);
+		}
 	}
 	
 	protected void saveSectionByLevel(Block block, String level, int count) {
@@ -164,6 +159,21 @@ public class SectionServiceImpl implements SectionService {
 		
 		for(int i=0; i<(Math.min(sectionList.size(), count)); i++) {
 			this.saveSectionInBlock(sectionList.get(i), block);
+		}
+	}
+	
+	protected boolean checkIfUnique(Section checkSection, Block block) {
+		List<Section> sectionList = new ArrayList<>();
+		for(Section section: this.getAllSections()) {
+			if(section.getBlock().getBlockId() == block.getBlockId()) {
+				sectionList.add(section);
+			}
+		}
+
+		if(sectionList.contains(checkSection)) {
+			return false;
+		} else {
+			return true;
 		}
 	}
 
