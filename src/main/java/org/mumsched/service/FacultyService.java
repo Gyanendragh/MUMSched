@@ -4,14 +4,18 @@ import java.util.List;
 
 import org.mumsched.domain.Faculty;
 
+
+
 public interface FacultyService {
+	public void save(Faculty faculty);
 
 	public List<Faculty> getAllFaculty();
 
-	public Faculty getFacultyById(long id);
+	public Faculty getFacultyById(Long facultyId); 
 
-	public void save(Faculty facultyObj);
+	public void delete(Long facultyId);
 
-	public void delete(Long id);
+	public Faculty findByFacultyIdNumber(String number);
 
 }
+

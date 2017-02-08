@@ -23,14 +23,24 @@ body {
 	
 		<tr>
 			<td>Entry Name</td>
-			<td><form:input path="ename" type="text" value="${editEntry.ename}"/></td>
-			<td><form:errors path="ename" cssStyle="color:red;"></form:errors>
+				<td><select name="entryName"> 
+						<option value="January"
+							<c:if test="${editEntry.entryName=='January'}">selected</c:if>>January</option>
+						<option value="April"
+							<c:if test="${editEntry.entryName=='April'}">selected</c:if>>April</option>
+						<option value="August"
+							<c:if test="${editEntry.entryName=='August'}">selected</c:if>>August</option>
+						<option value="November"
+							<c:if test="${editEntry.entryName=='November'}">selected</c:if>>November</option>
+												
+				</select></td>
+				<td><form:errors path="entryName" cssStyle="color:red;"></form:errors>
 			</td>
 		</tr>
 		<tr>
 			<td>Entry Year </td>
-			<td><form:input path="eyear" type="text" value="${editEntry.eyear}"/></td>
-			<td><form:errors path="eyear" cssStyle="color:red;"></form:errors>
+			<td><form:input path="entryYear" type="text" value="${editEntry.entryYear}"/></td>
+			<td><form:errors path="entryYear" cssStyle="color:red;"></form:errors>
 			</td>			
 		</tr>
 		<tr>
@@ -80,9 +90,9 @@ body {
 	   <tbody>
 		<tr>
 			
-			<td>${entry.ename}</td>
+			<td>${entry.entryName}</td>
 			
-			<td>${entry.eyear}</td>
+			<td>${entry.entryYear}</td>
 
 			<td>${entry.noOfFppStudents}</td>
 			
@@ -93,8 +103,8 @@ body {
 			
 
 
-			<td><a href="<spring:url value="/entry/edit/${entry.id}"/>">Edit</a> | <a
-				href="<spring:url value="/entry/delete/${entry.id}"/>">Delete</a></td>
+			<td><a href="<spring:url value="/entry/edit/${entry.entryId}"/>">Edit</a> | <a
+				href="<spring:url value="/entry/delete/${entry.entryId}"/>">Delete</a></td>
 
 		</tr>
 		</tbody>

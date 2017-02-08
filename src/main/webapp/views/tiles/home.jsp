@@ -70,7 +70,8 @@
 						<li><a href="#" data-toggle="dropdown"
 							class="dropdown-toggle">CRUD UserProfile <b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><form action="<spring:url value="/faculty/add"/>" method="get">
+								<li><form action="<spring:url value="/faculty/add"/>"
+										method="get">
 										<input type="submit" value="CRUD Faculty" />
 									</form></li>
 								<li><form action="<spring:url value="/student/add"/>" method="get">
@@ -80,6 +81,8 @@
 					</ul>
 				</security:authorize>
 			</div>
+
+
 
 
 			<security:authorize access="hasRole('ROLE_STUDENT')">
@@ -104,7 +107,7 @@
 							<input type="submit" value="View Schedule" />
 						</form>
 					</li>
-					<li>
+		<li>
 						<form action="<spring:url value=""/>" method="get">
 							<input type="submit" value="View Profile" />
 						</form>

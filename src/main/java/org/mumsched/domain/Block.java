@@ -1,89 +1,63 @@
 package org.mumsched.domain;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotNull;
+import javax.persistence.UniqueConstraint;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Block {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@NotNull
 	private Long blockId;
-	@NotNull
-	private String blockName;
-	@NotNull
-	private LocalDate blockStartDate;
-	@NotNull
-	private LocalDate blockEndDate;
-
-	@ManyToOne
-	@JoinColumn(name="entry_id")
-	private Entry entry;
 	
-	@ManyToOne
+	@Column(unique = true)
+	@NotEmpty(message="no empty field accpted")
+	private String blockName;
+
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="schedule_id")
 	private Schedule schedule;
-	
-	@OneToMany(mappedBy="block")
-	private List<Section> sectionList = new ArrayList<>();
-	
-	public Long getId() {
+
+	@OneToMany(mappedBy="block", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private Set<Section> sectionList = new HashSet<>();
+
+	public Long getBlockId() {
 		return blockId;
 	}
 
-	public void setId(Long id) {
-		this.blockId = id;
-	}
-
-	public Entry getEntry() {
-		return entry;
-	}
-
-	public void setEntry(Entry entry) {
-		this.entry = entry;
-	}
-
-	public List<Section> getSectionList() {
+	public Set<Section> getSectionList() {
 		return sectionList;
 	}
 
-	public void setSectionList(List<Section> sectionList) {
+	public void setSectionList(Set<Section> sectionList) {
 		this.sectionList = sectionList;
 	}
 
-	public String getbName() {
+	public void setBlockId(Long blockId) {
+		this.blockId = blockId;
+	}
+
+	public String getBlockName() {
 		return blockName;
 	}
 
-	public void setbName(String bName) {
-		this.blockName = bName;
+	public void setBlockName(String blockName) {
+		this.blockName = blockName;
 	}
 
-	public LocalDate getbStartDate() {
-		return blockStartDate;
-	}
-
-	public void setbStartDate(LocalDate bStartDate) {
-		this.blockStartDate = bStartDate;
-	}
-
-	public LocalDate getbEndDate() {
-		return blockEndDate;
-	}
-
-	public void setbEndDate(LocalDate bEndDate) {
-		this.blockEndDate = bEndDate;
-	}
 	public Schedule getSchedule() {
 		return schedule;
 	}
@@ -91,5 +65,6 @@ public class Block {
 	public void setSchedule(Schedule schedule) {
 		this.schedule = schedule;
 	}
-		
+
+	
 }

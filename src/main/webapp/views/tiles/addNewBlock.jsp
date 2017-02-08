@@ -26,26 +26,8 @@ body {
 			<td><form:errors path="blockName" cssStyle="color:red;"></form:errors>
 			</td>
 		</tr>
+			
 		<tr>
-			<td>Block Number </td>
-			<td><form:input path="blockId" type="text" /></td>
-			<td><form:errors path="blockId" cssStyle="color:red;"></form:errors>
-			</td>			
-		</tr>
-		<tr>
-			<td>Block Start Date</td>
-				<td><form:input path="blockStartDate" type="text" /></td>
-			<td><form:errors path="blockStartDate" cssStyle="color:red;"></form:errors>
-			</td>			
-		</tr>
-			<tr>
-			<td>Block End Date</td>
-				<td><form:input path="blockEndDate" type="text" /></td>
-			<td><form:errors path="blockEndDate" cssStyle="color:red;"></form:errors>
-			</td>			
-		</tr>
-		<tr>
-			<td></td>
 			<td>
 				<button>Save</button>
 			</td>
@@ -59,10 +41,9 @@ body {
 <table class="table table-hover">
  <thead>
 	<tr>
+		<td>Block Id</td>
 		<td>Block Name</td>
-		<td>Block Number</td>
-		<td>blockStartDate</td>
-		<td>blockEndDate</td>
+				
 		<td>&nbsp;</td>
 
 	</tr>
@@ -70,19 +51,12 @@ body {
 	<c:forEach var="block" items="${blocklist}">
 	   <tbody>
 		<tr>
-			
+			<td>${block.blockId}</td>
 			<td>${block.blockName}</td>
 
-			<td>${block.blockId}</td>
-
-			<td>${block.blockStartDate}</td>
-
-			<td>${block.blockEndDate}</td>
-			
-
-
-			<td><a href="<spring:url value="/block/edit/${block.id}"/>">Edit</a> | <a
-				href="<spring:url value="/block/delete/${block.id}"/>">Delete</a></td>
+					
+			<td><a href="<spring:url value="/block/edit/${block.blockId}"/>">Edit</a> | <a
+				href="<spring:url value="/block/delete/${block.blockId}"/>">Delete</a></td>
 
 		</tr>
 		</tbody>

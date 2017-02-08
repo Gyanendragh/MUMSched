@@ -37,4 +37,9 @@ StudentRepository studentrepository;
 		return (List<Student>)studentrepository.findAll();
 	}
 
+	@Override
+	public Student findByStudentIdNumber(String studentIdNumber) {
+		return this.studentrepository.findByStudentIdNumber(studentIdNumber);
+	}
+
 }

@@ -26,15 +26,35 @@ public class CourseServiceImpl implements CourseService {
 	}
 
 	@Override
-	public Course getCourseById(Long id) {
+	public Course getCourseBycourseId(Long courseId) {
 
-		return courserepository.findOne(id);
+		return courserepository.findOne(courseId);
 	}
 
 	@Override
-	public void delete(Long id) {
-		courserepository.delete(id);
+	public void delete(Long courseId) {
+		courserepository.delete(courseId);
 
+	}
+	
+	public Course getCourseBycourseName(String courseName) {
+		for(Course course: this.getAllCourse()) {
+			if(course.getCourseName().equals(courseName)) {
+				return course;
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public Course findByCourseName(String name) {
+		return this.courserepository.findByCourseName(name);
+
+	}
+
+	@Override
+	public Course findByCourseNumber(String name) {
+		return this.courserepository.findByCourseNumber(name);
 	}
 
 }

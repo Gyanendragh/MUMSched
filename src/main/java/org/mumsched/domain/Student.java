@@ -1,26 +1,45 @@
 package org.mumsched.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Student {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@NotNull
 	private Long studentId;
-	@NotNull
+	
+	@Column(unique  = true)
+	@NotEmpty(message="no empty field accepted")
+	private String studentIdNumber;
+	
+	
+	@NotEmpty(message="no empty field accepted")
 	private String fullName;
+	
+	@NotEmpty(message="no empty field accepted")
+	private String studentEntry;
+
+	public String getStudentIdNumber() {
+		return studentIdNumber;
+	}
+
+	public void setStudentIdNumber(String studentIdNumber) {
+		this.studentIdNumber = studentIdNumber;
+	}
+
+	public String getStudentEntry() {
+		return studentEntry;
+	}
+
+	public void setStudentEntry(String studentEntry) {
+		this.studentEntry = studentEntry;
+	}
 
 	public Long getStudentId() {
 		return studentId;
@@ -37,6 +56,5 @@ public class Student {
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
 	}
-	
 	
 }

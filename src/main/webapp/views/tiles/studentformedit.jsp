@@ -19,19 +19,34 @@ body {
 <h1>Edit Selected Student</h1>
 <form:form modelAttribute="editStudent" method="post">
 	<table >
-	<tr>
-			<td>Student Id </td>
-			<td><form:input path="studentId" type="text" value="${editStudent.studentId }" /></td>
-			<td><form:errors path="studentId" cssStyle="color:red;"></form:errors>
-			</td>			
-		</tr>
-		<tr>
+			<tr>
 			<td>Student Name</td>
 			<td><form:input path="fullName" type="text" value="${editStudent.fullName }"/></td>
 			<td><form:errors path="fullName" cssStyle="color:red;"></form:errors>
 			</td>
 		</tr>
-		
+		<tr>
+			<td>Student Id Number</td>
+			<td><form:input path="studentIdNumber" type="text" value="${editStudent.studentIdNumber }"/></td>
+			<td><form:errors path="studentIdNumber" cssStyle="color:red;"></form:errors>
+			</td>
+		</tr>
+		<tr>
+			<td>Student Entry</td>
+				<td><select name="studentEntry"> 
+						<option value="January"
+							<c:if test="${editEntry.studentEntry=='January'}">selected</c:if>>January</option>
+						<option value="April"
+							<c:if test="${editEntry.studentEntry=='April'}">selected</c:if>>April</option>
+						<option value="August"
+							<c:if test="${editEntry.studentEntry=='August'}">selected</c:if>>August</option>
+						<option value="November"
+							<c:if test="${editEntry.studentEntry=='November'}">selected</c:if>>November</option>
+												
+				</select></td>
+				<td><form:errors path="studentEntry" cssStyle="color:red;"></form:errors></td>
+
+		</tr>
 		<tr>
 			<td></td>
 			<td>
@@ -48,9 +63,9 @@ body {
 <table class="table table-hover">
  <thead>
 	<tr>
-	<td>Student Id</td>
 		<td>Student Name</td>
-		
+		<td>Student Id Number</td>
+		<td>Student Entry</td>		
 			<td>&nbsp;</td>
 
 	</tr>
@@ -58,11 +73,12 @@ body {
 	<c:forEach var="student" items="${studentlist}">
 	   <tbody>
 		<tr>
-			<td>${student.studentId}</td>
 			<td>${student.fullName}</td>
+			<td>${student.studentIdNumber}</td>
+			<td>${student.studentEntry}</td>
 
-			<td><a href="<spring:url value="/student/edit/${student.id}"/>">Edit</a> | <a
-				href="<spring:url value="/student/delete/${student.id}"/>">Delete</a></td>
+			<td><a href="<spring:url value="/student/edit/${student.studentId}"/>">Edit</a> | <a
+				href="<spring:url value="/student/delete/${student.studentId}"/>">Delete</a></td>
 
 		</tr>
 		</tbody>

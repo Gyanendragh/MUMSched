@@ -1,10 +1,17 @@
 package org.mumsched.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.OrderBy;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -20,6 +27,10 @@ public class Schedule {
 	@OneToOne
 	private Entry entry;
 
+	@OneToMany(mappedBy="schedule", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OrderBy("blockId")
+	private Set<Block> blockList = new HashSet<>();
+	
 	public Long getId() {
 		return id;
 	}
@@ -38,5 +49,11 @@ public class Schedule {
 	public void setEntry(Entry entry) {
 		this.entry = entry;
 	}
-
+	public Set<Block> getBlockList() {
+		return blockList;
+	}
+	public void setBlockList(Set<Block> blockList) {
+		this.blockList = blockList;
+	}
+	
 }

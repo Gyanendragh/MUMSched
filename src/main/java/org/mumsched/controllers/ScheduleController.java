@@ -2,8 +2,6 @@ package org.mumsched.controllers;
 
 import java.util.List;
 
-import org.mumsched.domain.Block;
-import org.mumsched.domain.Entry;
 import org.mumsched.domain.Schedule;
 import org.mumsched.serviceimpl.BlockServiceImpl;
 import org.mumsched.serviceimpl.EntryServiceImpl;
@@ -26,6 +24,7 @@ public class ScheduleController {
 
 	@Autowired
 	EntryServiceImpl entryService;
+
 	@Autowired
 	BlockServiceImpl blockService;
 
@@ -40,7 +39,7 @@ public class ScheduleController {
 		if(result.hasErrors()) {
 			return "scheduleAddForm";
 		} else {
-			this.saveSchedule(scheduleObj);
+			scheduleService.createSchedule(scheduleObj);
 			return "redirect:/schedule/add";
 		}
 	}
@@ -52,8 +51,8 @@ public class ScheduleController {
 	}
 
 	@RequestMapping(value="/view/{id}", method=RequestMethod.GET)
-	public String viewSchedule(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("schedule", scheduleService.getScheduleById(id));
+	public String viewSchedule(@PathVariable("id") Long scheduleId, Model model) {
+		model.addAttribute("schedule", scheduleService.getScheduleById(scheduleId));
 		return "viewSchedule";
 	}
 
@@ -62,24 +61,5 @@ public class ScheduleController {
 		List<Schedule> scheduleList=scheduleService.getAllSchedule();
 		return scheduleList;
 	}
-
-	protected void saveSchedule(Schedule scheduleObj) {
-		long id = Long.parseLong(scheduleObj.getName());
-		Entry entry = entryService.getEntryById(id);
-		Schedule schedule = new Schedule();
-
-		schedule.setEntry(entry);
-		schedule.setName("Schedule for " + entry.getEname());
-
-		for(int i=1; i<8; i++) {
-			Block block = new Block();
-			block.setbName("block"+i);
-
-			blockService.save(block);
-			entry.getBlockList().add(block);
-
-		}
-		entryService.save(entry);
-		scheduleService.save(schedule);
-	}
+	
 }

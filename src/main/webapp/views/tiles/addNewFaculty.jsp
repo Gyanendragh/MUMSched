@@ -19,16 +19,16 @@ body {
 <h1>Add New Faculty</h1>
 <form:form modelAttribute="newFaculty" method="post">
 	<table >
-	<tr>
-			<td>Faculty ID </td>
-			<td><form:input path="facultyId" type="text" /></td>
-			<td><form:errors path="facultyId" cssStyle="color:red;"></form:errors>
-			</td>			
-		</tr>
 		<tr>
 			<td>Faculty Name</td>
 			<td><form:input path="fullName" type="text" /></td>
 			<td><form:errors path="fullName" cssStyle="color:red;"></form:errors>
+			</td>
+		</tr>
+		<tr>
+			<td>Faculty Id Number</td>
+			<td><form:input path="facultyIdNumber" type="text" /></td>
+			<td><form:errors path="facultyIdNumber" cssStyle="color:red;"></form:errors>
 			</td>
 		</tr>
 		
@@ -48,7 +48,7 @@ body {
 <table class="table table-hover">
  <thead>
 	<tr>
-	<td>Faculty Id</td>
+		<td>Faculty Id Number</td>
 		<td>Faculty Name</td>
 		
 			<td>&nbsp;</td>
@@ -58,11 +58,11 @@ body {
 	<c:forEach var="faculty" items="${facultylist}">
 	   <tbody>
 		<tr>
-			<td>${faculty.facultyId}</td>
+			<td>${faculty.facultyIdNumber}</td>
 			<td>${faculty.fullName}</td>
 
-			<td><a href="<spring:url value="/faculty/edit/${faculty.id}"/>">Edit</a> | <a
-				href="<spring:url value="/faculty/delete/${faculty.id}"/>">Delete</a></td>
+			<td><a href="<spring:url value="/faculty/edit/${faculty.facultyId}"/>">Edit</a> | <a
+				href="<spring:url value="/faculty/delete/${faculty.facultyId}"/>">Delete</a></td>
 
 		</tr>
 		</tbody>

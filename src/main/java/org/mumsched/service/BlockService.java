@@ -13,5 +13,7 @@ public interface BlockService {
 	public void delete(Long id);
 
 	public List<Block> getAllBlock();
+	
+	public Block findByBlockName(String name);
 
 }

@@ -1,10 +1,10 @@
 package org.mumsched.repositories;
 
-import org.mumsched.domain.Block;
+import org.mumsched.domain.Section;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface BlockRepository extends CrudRepository<Block, Long> {
-	Block findByBlockName(String name);
+public interface SectionRepository extends CrudRepository<Section, Long> {
+
 }

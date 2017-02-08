@@ -6,17 +6,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
 
 @Entity
 public class Section {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@NotNull
-	private Long sectionId;
-	@NotNull
+	private Long id;
+	
 	private String sectionName;
-	@NotNull
+	
 	private Long studentLimit;
 	
 	@ManyToOne
@@ -32,11 +30,11 @@ public class Section {
 	private Faculty faculty;
 	
 	public Long getId() {
-		return sectionId;
+		return id;
 	}
 
 	public void setId(Long id) {
-		this.sectionId = id;
+		this.id = id;
 	}
 
 	public Long getStudentLimit() {

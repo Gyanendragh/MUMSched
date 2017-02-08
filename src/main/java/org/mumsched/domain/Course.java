@@ -1,16 +1,17 @@
 package org.mumsched.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotNull;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -19,53 +20,81 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class Course {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@NotNull
-	private Long id;
-	
+	private Long courseId;
+
 	@Column(unique = true)
-    @Size(min=2, max=30)
+	@Size(min=2, max=30)
 	@NotEmpty(message="no empty field accepted")
-	
-	private String cname; //  imp note path at the jsp file must equivalent to this cname
-	
+	private String courseName; //  imp note path at the jsp file must equivalent to this cname
+
 	@Column(unique = true)
 	@NotEmpty(message="no empty field accepted")
-	private String cnumber;
+	private String courseNumber;
+
+	@OneToOne(cascade={CascadeType.ALL})
+	@JoinColumn(name="prerequisite_id")
+	private Course prerequisite;
 	
-	@NotEmpty(message="no empty field accepted")
-	private String prerequisites;
-	
-	@NotEmpty(message="no empty field accepted")
-	
-	@ManyToMany
-	private List<Faculty> facultyList = new ArrayList<>();
+	private String courseLevel;
 	
 	@OneToMany(mappedBy="course")
-	private List<Section> sectionList = new ArrayList<>();
-	
-	public String getPrerequisites() {
-		return prerequisites;
+	private Set<Section> sectionList = new HashSet<>();
+//	private List<Section> sectionList = new ArrayList<>();
+
+	public String getLevel() {
+		return courseLevel;
 	}
-	public void setPrerequisites(String prerequisites) {
-		this.prerequisites = prerequisites;
+	public void setLevel(String level) {
+		this.courseLevel = level;
 	}
-	public Long getId() {
-		return id;
+	public String getCourseName() {
+		return courseName;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setCourseName(String courseName) {
+		this.courseName = courseName;
+	}
+	public String getCourseNumber() {
+		return courseNumber;
+	}
+	public void setCourseNumber(String courseNumber) {
+		this.courseNumber = courseNumber;
+	}
+	public Course getPrerequisite() {
+		return prerequisite;
+	}
+	public void setPrerequisite(Course prerequisite) {
+		this.prerequisite = prerequisite;
+	}
+	public String getCourseLevel() {
+		return courseLevel;
+	}
+	public void setCourseLevel(String courseLevel) {
+		this.courseLevel = courseLevel;
+	}
+	public Long getCourseId() {
+		return courseId;
+	}
+	public void setCourseId(Long courseId) {
+		this.courseId = courseId;
+	}
+
+	public Set<Section> getSectionList() {
+		return sectionList;
+	}
+	public void setSectionList(Set<Section> sectionList) {
+		this.sectionList = sectionList;
 	}
 	public String getCname() {
-		return cname;
+		return courseName;
 	}
 	public void setCname(String cname) {
-		this.cname = cname;
+		this.courseName = cname;
 	}
 	public String getCnumber() {
-		return cnumber;
+		return courseNumber;
 	}
 	public void setCnumber(String cnumber) {
-		this.cnumber = cnumber;
+		this.courseNumber = cnumber;
 	}
-	
+
 }

@@ -14,5 +14,7 @@ public interface StudentService {
 
 	public List<Student> getAllStudent();
 
+	public Student findByStudentIdNumber(String studentIdNumber);
+
 
 }

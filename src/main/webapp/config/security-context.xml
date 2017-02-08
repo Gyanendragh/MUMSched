@@ -25,8 +25,8 @@
 	<security:http use-expressions="true"> 
 		<security:intercept-url pattern="/home" access="isAuthenticated()"/>
 		<security:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
-		<security:intercept-url pattern="/student/**" access="hasRole('ROLE_STUDENT')"/>
- 		<security:intercept-url pattern="/faculty/**" access="hasRole('ROLE_FACULTY')"/>
+<!-- 		<security:intercept-url pattern="/student/**" access="hasRole('ROLE_STUDENT')"/> --> 	
+	<!-- <security:intercept-url pattern="/faculty/**" access="hasRole('ROLE_FACULTY')"/> -->
 		<security:form-login login-page="/login" 
 			login-processing-url="/postLogin" 
 			username-parameter="username" 
