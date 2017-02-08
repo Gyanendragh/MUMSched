@@ -3,6 +3,7 @@ package org.mumsched.domain;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -13,12 +14,19 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 public class Faculty {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long facultyId;
 	
+	@Column(unique  = true)
+	@NotEmpty(message="no empty field accepted")
+	private String facultyIdNumber;
+	
+	@NotEmpty(message="no empty field accepted")
 	private String fullName;
 	
 	@OneToMany(mappedBy="faculty")
@@ -30,19 +38,26 @@ public class Faculty {
 		inverseJoinColumns = @JoinColumn(name = "course_id" ))
 	private Set<Course> preferCourse = new HashSet<>();
 
-	public Long getFacultyId() {
-		return facultyId;
-	}
 
 	public Set<Course> getPreferCourse() {
 		return preferCourse;
 	}
 
-
 	public void setPreferCourse(Set<Course> preferCourse) {
 		this.preferCourse = preferCourse;
 	}
 
+	public String getFacultyIdNumber() {
+		return facultyIdNumber;
+	}
+
+	public void setFacultyIdNumber(String facultyIdNumber) {
+		this.facultyIdNumber = facultyIdNumber;
+	}
+
+	public Long getFacultyId() {
+		return facultyId;
+	}
 
 	public void setFacultyId(Long facultyId) {
 		this.facultyId = facultyId;

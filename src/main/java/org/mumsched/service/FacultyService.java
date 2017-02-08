@@ -15,5 +15,7 @@ public interface FacultyService {
 
 	public void delete(Long facultyId);
 
+	public Faculty findByFacultyIdNumber(String number);
+
 }
 

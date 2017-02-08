@@ -3,15 +3,12 @@ package org.mumsched.domain;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -31,9 +28,8 @@ public class Course {
 	@NotEmpty(message="no empty field accepted")
 	private String courseNumber;
 
-	@OneToOne(cascade={CascadeType.ALL})
-	@JoinColumn(name="prerequisite_id")
-	private Course prerequisite;
+	@Column(name="prerequisite_id")
+	private String prerequisite;
 	
 	private String courseLevel;
 	
@@ -58,10 +54,10 @@ public class Course {
 	public void setCourseNumber(String courseNumber) {
 		this.courseNumber = courseNumber;
 	}
-	public Course getPrerequisite() {
+	public String getPrerequisite() {
 		return prerequisite;
 	}
-	public void setPrerequisite(Course prerequisite) {
+	public void setPrerequisite(String prerequisite) {
 		this.prerequisite = prerequisite;
 	}
 	public String getCourseLevel() {
@@ -83,17 +79,6 @@ public class Course {
 	public void setSectionList(Set<Section> sectionList) {
 		this.sectionList = sectionList;
 	}
-	public String getCname() {
-		return courseName;
-	}
-	public void setCname(String cname) {
-		this.courseName = cname;
-	}
-	public String getCnumber() {
-		return courseNumber;
-	}
-	public void setCnumber(String cnumber) {
-		this.courseNumber = cnumber;
-	}
+	
 
 }

@@ -67,8 +67,11 @@ public class BlockServiceImpl implements BlockService{
 			sectionService.addSectionsToBlock(block);
 			schedule.getBlockList().add(block);
 		}
-		
 	}
 
+	@Override
+	public Block findByBlockName(String name) {
+		return this.blockrepository.findByBlockName(name);
+	}
 
 }

@@ -23,8 +23,18 @@ body {
 	
 		<tr>
 			<td>Entry Name</td>
-			<td><form:input path="entryName" type="text" value="${editEntry.entryName}"/></td>
-			<td><form:errors path="entryName" cssStyle="color:red;"></form:errors>
+				<td><select name="entryName"> 
+						<option value="January"
+							<c:if test="${editEntry.entryName=='January'}">selected</c:if>>January</option>
+						<option value="April"
+							<c:if test="${editEntry.entryName=='April'}">selected</c:if>>April</option>
+						<option value="August"
+							<c:if test="${editEntry.entryName=='August'}">selected</c:if>>August</option>
+						<option value="November"
+							<c:if test="${editEntry.entryName=='November'}">selected</c:if>>November</option>
+												
+				</select></td>
+				<td><form:errors path="entryName" cssStyle="color:red;"></form:errors>
 			</td>
 		</tr>
 		<tr>

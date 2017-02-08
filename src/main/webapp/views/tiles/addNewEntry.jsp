@@ -22,8 +22,14 @@ body {
 	
 		<tr>
 			<td>Entry Name</td>
-			<td><form:input path="entryName" type="text" /></td>
-			<td><form:errors path="entryName" cssStyle="color:red;"></form:errors>
+				<td><select name="entryName">
+						<option value="">--Select Entries--</option>
+						<option value="January">January</option>
+						<option value="April">April</option>
+						<option value="August">August</option>
+						<option value="November">November</option>
+				</select></td>
+				<td><form:errors path="entryName" cssStyle="color:red;"></form:errors>
 			</td>
 		</tr>
 		<tr>

@@ -1,6 +1,5 @@
 package org.mumsched.serviceimpl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.mumsched.domain.Course;
@@ -47,19 +46,15 @@ public class CourseServiceImpl implements CourseService {
 		return null;
 	}
 
-	public List<Course> getCourseBycourseLevel(String level) {
-		List<Course> courseList = new ArrayList<>();
-		for(Course course: this.getAllCourse()) {
-			if(course.getCourseLevel().equals(level)) {
-				courseList.add(course);
-			}
-		}
-		return courseList;
+	@Override
+	public Course findByCourseName(String name) {
+		return this.courserepository.findByCourseName(name);
+
 	}
 
-	public void saveCourse(Course courseObj) {
-		// TODO Auto-generated method stub
-		
+	@Override
+	public Course findByCourseNumber(String name) {
+		return this.courserepository.findByCourseNumber(name);
 	}
 
 }

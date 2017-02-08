@@ -44,13 +44,15 @@ body {
 			<tr>
 				<td>Prerequisite</td>
 				<td><form:select path="prerequisite">
-							<form:option value="" label="--- Select Course ---" />
-							<c:forEach var="course" items="${courseLists}">
-								<form:option value="${course.courseId}" label="${course.courseName}" />
-							</c:forEach>
-						</form:select>
-				</td>
-			</tr> 
+						<form:option value="" label="--- Select Course ---" />
+						<c:forEach var="course" items="${courseLists}">
+							<form:option value="${course.courseId}"
+								label="${course.courseName}" />
+						</c:forEach>
+					</form:select></td>
+			</tr>
+
+
 			<tr>
 				<td></td>
 				<td>
@@ -81,18 +83,30 @@ body {
 					<td>${course.courseName}</td>
 
 					<td>${course.courseNumber}</td>
-					
+
 					<td>${course.courseLevel}</td>
-
-					<td>${course.prerequisite.courseName}</td>
-
-
-
-					<td><a
-						href="<spring:url value="/course/edit/${course.courseId}"/>">Edit</a>
-						| <a
-						href="<spring:url value="/course/delete/${course.courseId}"/>">Delete</a></td>
-
+					<td>
+					<c:choose>
+						<c:when test="${course.prerequisite ==3 }">
+							SWE
+						</c:when>
+						<c:when test="${course.prerequisite ==15}">
+							DBMS
+						</c:when>
+						<c:when test="${course.prerequisite ==1 }">
+							FPP
+						</c:when>
+						<c:when test="${course.prerequisite ==2 }">
+							MPP
+						</c:when>
+						<c:when test="${course.prerequisite ==5}">
+							WAP
+						</c:when>
+					</c:choose>
+					</td>
+					<td><a href="<spring:url value="/course/edit/${course.courseId}"/>">Edit</a> | 
+					<a href="<spring:url value="/course/delete/${course.courseId}"/>">Delete</a>
+					</td>
 				</tr>
 			</tbody>
 		</c:forEach>

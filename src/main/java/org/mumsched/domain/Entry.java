@@ -26,13 +26,13 @@ public class Entry {
 	@NotNull @Min(2017) @Max(2020)
 	private String entryYear;
     
-	@NotNull @Min(25) @Max(200)
+	@NotNull @Min(1) @Max(200)
 	private int noOfFppStudents;
 	
-	@NotNull @Min(25) @Max(200)
+	@NotNull @Min(1) @Max(200)
 	private int noOfMppStudents;
 	
-	@NotNull @Max(200)
+	@NotNull @Min(1) @Max(200)
 	private int noOfUsResident;
 	
 	public int getNoOfFppStudents() {

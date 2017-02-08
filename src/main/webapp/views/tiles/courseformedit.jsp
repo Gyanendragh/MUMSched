@@ -46,14 +46,14 @@ body {
 			<tr>
 				<td>Prerequisite</td>
 				<td><form:select path="prerequisite">
-							<form:option value="NONE" label="--- Select Course ---" />
-							<c:forEach var="prerequisite" items="${courseLists}">
-								<form:option value="${prerequisite.courseId}" label="${prerequisite.courseName}" />
+							<form:option value="" label="--- Select Course ---" />
+							<c:forEach var="course" items="${courseLists}">
+								<form:option value="${course.courseId}" label="${course.courseName}" />
 							</c:forEach>
 						</form:select>
 				</td>
-			</tr>
-		
+			</tr> 
+
 			<tr>
 				<td></td>
 				<td>
@@ -84,13 +84,10 @@ body {
 					<td>${course.courseName}</td>
 
 					<td>${course.courseNumber}</td>
-					
+
 					<td>${course.courseLevel}</td>
-
+					
 					<td>${course.prerequisite.courseName}</td>
-
-
-
 
 					<td><a
 						href="<spring:url value="/course/edit/${course.courseId}"/>">Edit</a>

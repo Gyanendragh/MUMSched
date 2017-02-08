@@ -38,7 +38,7 @@
 					<ul class="nav navbar-nav">
 
 						<li>
-							<form action="<spring:url value=""/>" method="get">
+							<form action="<spring:url value="/block/add"/>" method="get">
 								<input type="submit" value="CRUD Block" />
 							</form>
 						</li>
@@ -70,10 +70,11 @@
 						<li><a href="#" data-toggle="dropdown"
 							class="dropdown-toggle">CRUD UserProfile <b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><form action="<spring:url value=""/>" method="get">
+								<li><form action="<spring:url value="/faculty/add"/>"
+										method="get">
 										<input type="submit" value="CRUD Faculty" />
 									</form></li>
-								<li><form action="<spring:url value=""/>" method="get">
+								<li><form action="<spring:url value="/student/add"/>" method="get">
 										<input type="submit" value="CRUD Students" />
 									</form></li>
 							</ul></li>
@@ -87,7 +88,7 @@
 			<security:authorize access="hasRole('ROLE_STUDENT')">
 				<ul class="nav navbar-nav">
 					<li>
-						<form action="<spring:url value="/schedule/view/1"/>" method="get">
+						<form action="<spring:url value=""/>" method="get">
 							<input type="submit" value="View Schedule" />
 						</form>
 					</li>
@@ -102,11 +103,11 @@
 			<security:authorize access="hasRole('ROLE_FACULTY')">
 				<ul class="nav navbar-nav">
 					<li>
-						<form action="<spring:url value="/schedule/view/1"/>" method="get">
+						<form action="<spring:url value=""/>" method="get">
 							<input type="submit" value="View Schedule" />
 						</form>
 					</li>
-					<li>
+		<li>
 						<form action="<spring:url value=""/>" method="get">
 							<input type="submit" value="View Profile" />
 						</form>

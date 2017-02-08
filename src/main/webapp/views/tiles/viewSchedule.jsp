@@ -18,7 +18,7 @@
 			<table class="table">
 				<c:forEach var="block" items="${schedule.blockList}">
 					<tr>
-						<td>${block.blockName}</td><td>
+						<td>${block.blockName}
 							<ul class="list-group">
 								<c:forEach var="section" items="${block.sectionList}">
 									<li class="list-group-item">${section.sectionName}</li>

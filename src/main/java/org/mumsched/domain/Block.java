@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -12,13 +13,16 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Block {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long blockId;
-
+	
+	@Column(unique = true)
+	@NotEmpty(message="no empty field accpted")
 	private String blockName;
 
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -27,7 +31,6 @@ public class Block {
 
 	@OneToMany(mappedBy="block", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Set<Section> sectionList = new HashSet<>();
-//	private List<Section> sectionList = new ArrayList<>();
 
 	public Long getBlockId() {
 		return blockId;
@@ -62,5 +65,4 @@ public class Block {
 	}
 
 	
-
 }

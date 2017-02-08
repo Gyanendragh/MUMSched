@@ -10,9 +10,6 @@ import org.mumsched.service.FacultyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
-
-
 @Service
 public class FacultyServiceImpl implements FacultyService {
 	@Autowired
@@ -57,6 +54,13 @@ public class FacultyServiceImpl implements FacultyService {
 		
 		return facultyListResult;
 	}
+
+	@Override
+	public Faculty findByFacultyIdNumber(String number) {
+		return this.facultyrepository.findByFacultyIdNumber(number);
+	}
+
+
 
 	
 

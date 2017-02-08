@@ -15,44 +15,43 @@ INSERT INTO entry (entryId, entryName, entryYear, noOfFppStudents, noOfMppStuden
 INSERT INTO entry (entryId, entryName, entryYear, noOfFppStudents, noOfMppStudents, noOfUsResident) VALUES (4, "October", 2017, 55, 55, 55);
 
 
-INSERT INTO faculty(facultyId, fullName) VALUES (1, "Lerman");
-INSERT INTO faculty(facultyId, fullName) VALUES (2, "Renuka");
-INSERT INTO faculty(facultyId, fullName) VALUES (3, "Pormila");
-INSERT INTO faculty(facultyId, fullName) VALUES (4, "Bruen");
-INSERT INTO faculty(facultyId, fullName) VALUES (5, "Crish");
-INSERT INTO faculty(facultyId, fullName) VALUES (6, "James");
-INSERT INTO faculty(facultyId, fullName) VALUES (7, "Salek");
-INSERT INTO faculty(facultyId, fullName) VALUES (8, "Saad");
-INSERT INTO faculty(facultyId, fullName) VALUES (9, "Levi");
-INSERT INTO faculty(facultyId, fullName) VALUES (10, "Xing");
-INSERT INTO faculty(facultyId, fullName) VALUES (11, "Arrocha");
-INSERT INTO faculty(facultyId, fullName) VALUES (12, "Ruby");
-INSERT INTO faculty(facultyId, fullName) VALUES (13, "Corozza");
-INSERT INTO faculty(facultyId, fullName) VALUES (14, "Rakesh");
-INSERT INTO faculty(facultyId, fullName) VALUES (15, "Nolle");
-INSERT INTO faculty(facultyId, fullName) VALUES (16, "Maile");
-INSERT INTO faculty(facultyId, fullName) VALUES (17, "Frank");
-INSERT INTO faculty(facultyId, fullName) VALUES (18, "Khan");
-INSERT INTO faculty(facultyId, fullName) VALUES (19, "Guthrie");
-INSERT INTO faculty(facultyId, fullName) VALUES (20, "Mukadam");
-INSERT INTO faculty(facultyId, fullName) VALUES (21, "SCI_Faculty1");
-INSERT INTO faculty(facultyId, fullName) VALUES (22, "SCI_Faculty2");
-INSERT INTO faculty(facultyId, fullName) VALUES (23, "SCI_Faculty3");
-INSERT INTO faculty(facultyId, fullName) VALUES (24, "SCI_Faculty4");
-INSERT INTO faculty(facultyId, fullName) VALUES (25, "SCI_Faculty5");
-INSERT INTO faculty(facultyId, fullName) VALUES (26, "SCI_Faculty6");
-INSERT INTO faculty(facultyId, fullName) VALUES (27, "FPP_Faculty1");
-INSERT INTO faculty(facultyId, fullName) VALUES (28, "FPP_Faculty2");
-INSERT INTO faculty(facultyId, fullName) VALUES (29, "FPP_Faculty2");
-INSERT INTO faculty(facultyId, fullName) VALUES (30, "FPP_Faculty4");
-INSERT INTO faculty(facultyId, fullName) VALUES (31, "FPP_Faculty5");
-INSERT INTO faculty(facultyId, fullName) VALUES (32, "MPP_Faculty1");
-INSERT INTO faculty(facultyId, fullName) VALUES (33, "MPP_Faculty2");
-INSERT INTO faculty(facultyId, fullName) VALUES (34, "MPP_Faculty3");
+INSERT INTO faculty(facultyId,facultyIdNumber, fullName) VALUES (1,2000, "Lerman");
+INSERT INTO faculty(facultyId,facultyIdNumber, fullName) VALUES (2,2001, "Renuka");
+INSERT INTO faculty(facultyId,facultyIdNumber, fullName) VALUES (3,2002, "Pormila");
+INSERT INTO faculty(facultyId,facultyIdNumber, fullName) VALUES (4,2003, "Bruen");
+INSERT INTO faculty(facultyId,facultyIdNumber, fullName) VALUES (5,2004, "Crish");
+INSERT INTO faculty(facultyId,facultyIdNumber, fullName) VALUES (6,2005, "James");
+INSERT INTO faculty(facultyId,facultyIdNumber, fullName) VALUES (7,2006, "Salek");
+INSERT INTO faculty(facultyId,facultyIdNumber, fullName) VALUES (8,2042, "Saad");
+INSERT INTO faculty(facultyId,facultyIdNumber, fullName) VALUES (9,2008, "Levi");
+INSERT INTO faculty(facultyId,facultyIdNumber, fullName) VALUES (10,2009, "Xing");
+INSERT INTO faculty(facultyId,facultyIdNumber, fullName) VALUES (11,2010, "Arrocha");
+INSERT INTO faculty(facultyId,facultyIdNumber, fullName) VALUES (12,2011, "Ruby");
+INSERT INTO faculty(facultyId,facultyIdNumber, fullName) VALUES (13,2012, "Corozza");
+INSERT INTO faculty(facultyId,facultyIdNumber, fullName) VALUES (14,2013, "Rakesh");
+INSERT INTO faculty(facultyId,facultyIdNumber, fullName) VALUES (15,2014, "Nolle");
+INSERT INTO faculty(facultyId,facultyIdNumber, fullName) VALUES (16,2015, "Maile");
+INSERT INTO faculty(facultyId,facultyIdNumber, fullName) VALUES (17,2016, "Frank");
+INSERT INTO faculty(facultyId,facultyIdNumber, fullName) VALUES (18,2017, "Khan");
+INSERT INTO faculty(facultyId,facultyIdNumber, fullName) VALUES (19,2018, "Guthrie");
+INSERT INTO faculty(facultyId,facultyIdNumber, fullName) VALUES (20,2019,"Mukadam");
+INSERT INTO faculty(facultyId,facultyIdNumber, fullName) VALUES (21,2020, "SCI_Faculty1");
+INSERT INTO faculty(facultyId,facultyIdNumber, fullName) VALUES (22,2021, "SCI_Faculty2");
+INSERT INTO faculty(facultyId,facultyIdNumber, fullName) VALUES (23,2022, "SCI_Faculty3");
+INSERT INTO faculty(facultyId,facultyIdNumber, fullName) VALUES (24,2023, "SCI_Faculty4");
+INSERT INTO faculty(facultyId,facultyIdNumber, fullName) VALUES (25,2024, "SCI_Faculty5");
+INSERT INTO faculty(facultyId,facultyIdNumber, fullName) VALUES (26,2025, "SCI_Faculty6");
+INSERT INTO faculty(facultyId,facultyIdNumber, fullName) VALUES (27,2026, "FPP_Faculty1");
+INSERT INTO faculty(facultyId,facultyIdNumber, fullName) VALUES (28,2027, "FPP_Faculty2");
+INSERT INTO faculty(facultyId,facultyIdNumber, fullName) VALUES (30,2028, "FPP_Faculty4");
+INSERT INTO faculty(facultyId,facultyIdNumber, fullName) VALUES (31,2029, "FPP_Faculty5");
+INSERT INTO faculty(facultyId,facultyIdNumber, fullName) VALUES (32,2030, "MPP_Faculty1");
+INSERT INTO faculty(facultyId,facultyIdNumber, fullName) VALUES (33,2031, "MPP_Faculty2");
+INSERT INTO faculty(facultyId,facultyIdNumber, fullName) VALUES (34,2032, "MPP_Faculty3");
 
 
-INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (1,"FPP","CS380",'300',NULL);
-INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (2,"MPP","CS400",'300',NULL);
+INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (1,"FPP","CS380",'400',NULL);
+INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (2,"MPP","CS400",'400',NULL);
 INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (3,"SWE","CS425",'400',NULL);
 INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (4,"Algorithm","CS435",'400',NULL);
 INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (5,"WAP","CS440",'400',NULL);
@@ -62,10 +61,9 @@ INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id
 INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (9,"BD","CS525",'500',NULL);
 INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (10,"BDA","CS520",'500',NULL);
 INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (11,"MWA","CS522",'500',5);
-INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (12,"SCI","CS500",'300',NULL);
-INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (13,"ML","CS420",'400',NULL);
+INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (12,"SCI","CS500",'500',NULL);
 INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (14,"Course1","CS430",'400',NULL);
-INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (15,"Course2","CS406",'400',NULL);
+INSERT INTO course (courseId,courseName,courseNumber,courseLevel,prerequisite_id) VALUES (15,"DBMS","CS406",'400',NULL);
 
 
 
@@ -112,6 +110,11 @@ INSERT INTO course_faculty(course_id, faculty_id) VALUES(13, 7);
 INSERT INTO course_faculty(course_id, faculty_id) VALUES(13, 9);
 INSERT INTO course_faculty(course_id, faculty_id) VALUES(14, 8);
 INSERT INTO course_faculty(course_id, faculty_id) VALUES(15, 8);
+
+
+
+
+
 
 
 
