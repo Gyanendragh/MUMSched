@@ -1,6 +1,5 @@
 package org.mumsched.controllers;
 
-
 import java.util.List;
 
 import javax.validation.Valid;

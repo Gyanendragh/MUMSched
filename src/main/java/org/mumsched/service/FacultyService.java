@@ -4,8 +4,6 @@ import java.util.List;
 
 import org.mumsched.domain.Faculty;
 
-
-
 public interface FacultyService {
 	public void save(Faculty faculty);
 

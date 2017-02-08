@@ -50,26 +50,8 @@ public class Faculty {
 		return facultyId;
 	}
 
-	public Set<Course> getPreferCourse() {
-		return preferCourse;
-	}
-
-
-	public void setPreferCourse(Set<Course> preferCourse) {
-		this.preferCourse = preferCourse;
-	}
-
-
 	public void setFacultyId(Long facultyId) {
 		this.facultyId = facultyId;
-	}
-
-	public Set<Section> getSection() {
-		return section;
-	}
-
-	public void setSection(Set<Section> section) {
-		this.section = section;
 	}
 
 	public String getFullName() {
@@ -80,5 +62,20 @@ public class Faculty {
 		this.fullName = fullName;
 	}
 
+	public Set<Section> getSection() {
+		return section;
+	}
+
+	public void setSection(Set<Section> section) {
+		this.section = section;
+	}
+
+	public Set<Course> getPreferCourse() {
+		return preferCourse;
+	}
+
+	public void setPreferCourse(Set<Course> preferCourse) {
+		this.preferCourse = preferCourse;
+	}
 
 }

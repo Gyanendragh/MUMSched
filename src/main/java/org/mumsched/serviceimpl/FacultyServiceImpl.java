@@ -22,20 +22,17 @@ public class FacultyServiceImpl implements FacultyService {
 
 	@Override
 	public List<Faculty> getAllFaculty() {
-
 		return (List<Faculty>) facultyrepository.findAll();
 	}
 
 	@Override
 	public Faculty getFacultyById(Long facultyId) {
-
 		return facultyrepository.findOne(facultyId);
 	}
 
 	@Override
 	public void delete(Long facultyId) {
 		facultyrepository.delete(facultyId);
-
 	}
 
 	public List<Faculty> getFacultyByCourse(Course course) {
@@ -59,9 +56,5 @@ public class FacultyServiceImpl implements FacultyService {
 	public Faculty findByFacultyIdNumber(String number) {
 		return this.facultyrepository.findByFacultyIdNumber(number);
 	}
-
-
-
-	
 
 }

@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.mumsched.domain.Course;
 
-
 public interface CourseService {
 	public void save(Course course);
 

@@ -1,5 +1,7 @@
 package org.mumsched.serviceimpl;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.mumsched.domain.Block;
@@ -10,7 +12,6 @@ import org.mumsched.repositories.SectionRepository;
 import org.mumsched.service.SectionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 
 @Service
 public class SectionServiceImpl implements SectionService {
@@ -31,54 +32,94 @@ public class SectionServiceImpl implements SectionService {
 
 	@Override
 	public List<Section> getAllSections() {
-
 		return (List<Section>) sectionrepository.findAll();
 	}
 
 	@Override
 	public Section getSectionBysectionId(Long sectionId) {
-
 		return sectionrepository.findOne(sectionId);
 	}
 
 	@Override
 	public void delete(Long sectionId) {
 		sectionrepository.delete(sectionId);
-
 	}
-
 
 	public void addSectionsToBlock(Block block) {
 
 		String blockName = block.getBlockName();
-		int numberOfFpp = block.getSchedule().getEntry().getNoOfFppStudents();
-		int numberOfMpp = block.getSchedule().getEntry().getNoOfMppStudents();
+		int numberOfFpp = (block.getSchedule().getEntry().getNoOfFppStudents()/25)+1;
+		int numberOfMpp = (block.getSchedule().getEntry().getNoOfMppStudents()/25)+1;
+		int total = numberOfFpp + numberOfMpp;
 
-		Course course;
-		List<Faculty> facultyList;
-		
+		List<Faculty> facultyListFPP = new ArrayList<>();
+		List<Faculty> facultyListMPP = new ArrayList<>();
+
 		switch(blockName) {
 		// ALL SCI Blocks
-		case "Block 1" : 
-			int n = (numberOfFpp + numberOfMpp) / 25;
-			course = courseService.getCourseBycourseName("SCI");
-			facultyList = facultyService.getFacultyByCourse(course);
-		
-			for(int i=0; i<=n; i++) {
-				this.saveSectionInBlock(course, facultyList.get(i), block);
-			}
+		case "Block 1" :
+			Course sci = courseService.getCourseBycourseName("SCI");
+			facultyListFPP = facultyService.getFacultyByCourse(sci);
+			for(int i=0; i<(Math.min(facultyListFPP.size(), total)); i++) {
+				this.saveSectionInBlock(sci, facultyListFPP.get(i), block);
+			}				
+
 			break;
+
+			// FPP and MPP
 		case "Block 2" :
-			course = courseService.getCourseBycourseName("FPP");
-			facultyList = facultyService.getFacultyByCourse(course);
-		
-			for(int i=0; i<=numberOfFpp/25; i++) {
-				this.saveSectionInBlock(course, facultyList.get(i), block);
+			Course fpp = courseService.getCourseBycourseName("FPP");
+			facultyListFPP = facultyService.getFacultyByCourse(fpp);
+			for(int i=0; i<(Math.min(facultyListFPP.size(), numberOfFpp)); i++) {
+				this.saveSectionInBlock(fpp, facultyListFPP.get(i), block);
+			}				
+
+			Course mpp = courseService.getCourseBycourseName("MPP");
+			facultyListMPP = facultyService.getFacultyByCourse(mpp);
+
+			for(Faculty facFPP : facultyListFPP) {
+				for(int j=0; j<facultyListMPP.size(); j++) {
+					Faculty facMPP = facultyListMPP.get(j);
+					if(facFPP.getFacultyId() == facMPP.getFacultyId()) {
+						facultyListMPP.remove(facMPP);
+					}
+				}
 			}
-			course = courseService.getCourseBycourseName("MPP");
-			for(int i=0; i<=numberOfMpp/25; i++) {
-				this.saveSectionInBlock(course, facultyList.get(i), block);
+
+			for(int i=0; i<(Math.min(facultyListMPP.size(), numberOfMpp)); i++) {
+				this.saveSectionInBlock(mpp, facultyListMPP.get(i), block);
+			}				
+
+			break;
+			// MPP and ELECTIVE
+		case "Block 3" :
+			mpp = courseService.getCourseBycourseName("MPP");
+			facultyListFPP = facultyService.getFacultyByCourse(mpp);
+			for(int i=0; i<(Math.min(facultyListFPP.size(), numberOfFpp)); i++) {
+				this.saveSectionInBlock(mpp, facultyListFPP.get(i), block);
 			}
+
+			this.saveSectionByLevel(block, "400", numberOfMpp);
+
+			break;
+			// Elective
+		case "Block 4" :
+			this.saveSectionByLevel(block, "400", numberOfFpp);
+			this.saveSectionByLevel(block, "500", numberOfMpp);
+			break;
+
+		case "Block 5" :
+			this.saveSectionByLevel(block, "400", numberOfFpp);
+			this.saveSectionByLevel(block, "500", numberOfMpp);
+			break;
+
+		case "Block 6" :
+			this.saveSectionByLevel(block, "400", numberOfFpp);
+			this.saveSectionByLevel(block, "500", numberOfMpp);
+			break;
+
+		case "Block 7" :
+			this.saveSectionByLevel(block, "500", numberOfFpp);
 			break;
 
 		}
@@ -92,6 +133,56 @@ public class SectionServiceImpl implements SectionService {
 		section.setFaculty(faculty);
 		this.save(section);
 		block.getSectionList().add(section);
+	}
+
+	protected void saveSectionInBlock(Section section, Block block) {
+		this.save(section);
+		block.getSectionList().add(section);
+	}
+
+	protected void saveSectionByLevel(Block block, String level, int count) {
+		List<Course> electiveList = new ArrayList<>();
+		List<Faculty> facultyList = new ArrayList<>();
+		List<Faculty> previousFacultyList = new ArrayList<>();
+		List<Section> sectionList = new ArrayList<>();
+		electiveList = courseService.getCourseBycourseLevel(level);
+
+		for(Course course : electiveList) {
+			facultyList = facultyService.getFacultyByCourse(course);
+
+			for(Section sec : this.getAllSections()) {
+				if(sec.getBlock().getBlockId() == block.getBlockId()) {
+					previousFacultyList.add(sec.getFaculty());
+				}
+			}
+
+			Iterator<Faculty> it = facultyList.iterator();
+			while (it.hasNext()) {
+				Faculty fac = it.next();
+				for(int j=0; j<previousFacultyList.size(); j++) {
+					Faculty facPre = previousFacultyList.get(j);
+					if(fac.getFacultyId() == facPre.getFacultyId()) {
+						it.remove();
+					}
+				}
+			}
+
+			for(Faculty faculty : facultyList) {
+
+				Section section = new Section();
+				section.setSectionName(course.getCourseName() + "( " + faculty.getFullName() + " )");
+				section.setBlock(block);
+				section.setCourse(course);
+				section.setFaculty(faculty);
+
+				sectionList.add(section);
+
+			}
+		}
+
+		for(int i=0; i<(Math.min(sectionList.size(), count)); i++) {
+			this.saveSectionInBlock(sectionList.get(i), block);
+		}
 	}
 
 }

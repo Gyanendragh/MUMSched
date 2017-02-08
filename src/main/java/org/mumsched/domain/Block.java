@@ -13,7 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.UniqueConstraint;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -25,8 +24,8 @@ public class Block {
 	
 	@Column(unique = true)
 	@NotEmpty(message="no empty field accpted")
-	private String blockName;
 
+	private String blockName;
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="schedule_id")
 	private Schedule schedule;
@@ -36,14 +35,6 @@ public class Block {
 
 	public Long getBlockId() {
 		return blockId;
-	}
-
-	public Set<Section> getSectionList() {
-		return sectionList;
-	}
-
-	public void setSectionList(Set<Section> sectionList) {
-		this.sectionList = sectionList;
 	}
 
 	public void setBlockId(Long blockId) {
@@ -66,5 +57,12 @@ public class Block {
 		this.schedule = schedule;
 	}
 
+	public Set<Section> getSectionList() {
+		return sectionList;
+	}
+
+	public void setSectionList(Set<Section> sectionList) {
+		this.sectionList = sectionList;
+	}
 	
 }
