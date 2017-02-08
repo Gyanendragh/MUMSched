@@ -1,6 +1,7 @@
 package org.mumsched.serviceimpl;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.mumsched.domain.Block;
@@ -75,7 +76,7 @@ public class SectionServiceImpl implements SectionService {
 
 			Course mpp = courseService.getCourseBycourseName("MPP");
 			facultyListMPP = facultyService.getFacultyByCourse(mpp);
-			
+
 			for(Faculty facFPP : facultyListFPP) {
 				for(int j=0; j<facultyListMPP.size(); j++) {
 					Faculty facMPP = facultyListMPP.get(j);
@@ -84,7 +85,7 @@ public class SectionServiceImpl implements SectionService {
 					}
 				}
 			}
-			
+
 			for(int i=0; i<(Math.min(facultyListMPP.size(), numberOfMpp)); i++) {
 				this.saveSectionInBlock(mpp, facultyListMPP.get(i), block);
 			}				
@@ -142,11 +143,41 @@ public class SectionServiceImpl implements SectionService {
 	protected void saveSectionByLevel(Block block, String level, int count) {
 		List<Course> electiveList = new ArrayList<>();
 		List<Faculty> facultyList = new ArrayList<>();
+		List<Faculty> previousFacultyList = new ArrayList<>();
 		List<Section> sectionList = new ArrayList<>();
 		electiveList = courseService.getCourseBycourseLevel(level);
 
 		for(Course course : electiveList) {
 			facultyList = facultyService.getFacultyByCourse(course);
+
+			for(Section sec : this.getAllSections()) {
+				if(sec.getBlock().getBlockId() == block.getBlockId()) {
+					previousFacultyList.add(sec.getFaculty());
+				}
+			}
+
+			Iterator<Faculty> it = facultyList.iterator();
+			while (it.hasNext()) {
+				Faculty fac = it.next();
+				for(int j=0; j<previousFacultyList.size(); j++) {
+					Faculty facPre = previousFacultyList.get(j);
+					if(fac.getFacultyId() == facPre.getFacultyId()) {
+						it.remove();
+					}
+				}
+			}
+
+
+			//			for(Faculty fac : facultyList) {
+			//				for(int j=0; j<previousFacultyList.size(); j++) {
+			//					Faculty facPre = previousFacultyList.get(j);
+			//					if(fac.getFacultyId() == facPre.getFacultyId()) {
+			//						facultyList.remove(facPre);
+			//					}
+			//				}
+			//			}
+
+
 			for(Faculty faculty : facultyList) {
 
 				Section section = new Section();
