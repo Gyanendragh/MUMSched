@@ -87,7 +87,7 @@
 			<security:authorize access="hasRole('ROLE_STUDENT')">
 				<ul class="nav navbar-nav">
 					<li>
-						<form action="<spring:url value=""/>" method="get">
+						<form action="<spring:url value="/schedule/view/1"/>" method="get">
 							<input type="submit" value="View Schedule" />
 						</form>
 					</li>
@@ -102,7 +102,7 @@
 			<security:authorize access="hasRole('ROLE_FACULTY')">
 				<ul class="nav navbar-nav">
 					<li>
-						<form action="<spring:url value=""/>" method="get">
+						<form action="<spring:url value="/schedule/view/1"/>" method="get">
 							<input type="submit" value="View Schedule" />
 						</form>
 					</li>
