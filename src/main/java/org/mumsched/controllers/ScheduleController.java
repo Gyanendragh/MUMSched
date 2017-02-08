@@ -82,5 +82,4 @@ public class ScheduleController {
 		entryService.save(entry);
 		scheduleService.save(schedule);
 	}
-
 }

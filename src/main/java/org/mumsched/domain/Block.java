@@ -91,6 +91,5 @@ public class Block {
 	public void setSchedule(Schedule schedule) {
 		this.schedule = schedule;
 	}
-	
-	
+		
 }
