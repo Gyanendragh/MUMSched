@@ -167,17 +167,6 @@ public class SectionServiceImpl implements SectionService {
 				}
 			}
 
-
-			//			for(Faculty fac : facultyList) {
-			//				for(int j=0; j<previousFacultyList.size(); j++) {
-			//					Faculty facPre = previousFacultyList.get(j);
-			//					if(fac.getFacultyId() == facPre.getFacultyId()) {
-			//						facultyList.remove(facPre);
-			//					}
-			//				}
-			//			}
-
-
 			for(Faculty faculty : facultyList) {
 
 				Section section = new Section();
