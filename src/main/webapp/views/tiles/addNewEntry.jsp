@@ -32,8 +32,6 @@ body {
 						<option value="November">November</option>
 				</select></td>
 				<td><form:errors path="entryName" cssStyle="color:red;"></form:errors>
-				<td><form:input path="entryName" type="text" /></td>
-				<td><form:errors path="entryName" cssStyle="color:red;"></form:errors>
 				</td>
 			</tr>
 			<tr>

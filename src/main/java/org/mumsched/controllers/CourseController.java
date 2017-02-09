@@ -22,7 +22,9 @@ public class CourseController {
 	@Autowired
 	FacultyService facultyservice;
 
+	@Autowired
 	CourseServiceImpl courseservice;
+
 
 	@RequestMapping(value={"/add"},method=RequestMethod.GET)
 	public String getForm(@ModelAttribute("newCourse") Course course,Model model){

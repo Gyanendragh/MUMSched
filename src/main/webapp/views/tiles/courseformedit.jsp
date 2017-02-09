@@ -43,27 +43,6 @@ body {
 				<td><form:errors path="courseLevel" cssStyle="color:red;"></form:errors>
 				</td>
 			</tr>
-				<tr>
-				<td>Prerequisite</td>
-				<td><form:select path="prerequisite">
-							<form:option value="" label="--- Select Course ---" />
-							<c:forEach var="course" items="${courseLists}">
-								<form:option value="${course.courseId}" label="${course.courseName}" />
-							</c:forEach>
-						</form:select>
-				</td>
-			</tr> 
-				<tr>
-				<td>Prerequisite</td>
-				<td><form:select path="prerequisite">
-							<c:forEach var="prerequisite" items="${courseLists}">
-								<form:option value="${prerequisite.courseId}" label="${prerequisite.courseName}" />
-							</c:forEach>
-						</form:select>
-				</td>
-			</tr>
-			
-
 			<tr>
 				<td></td>
 				<td>
@@ -82,7 +61,7 @@ body {
 				<td>Course Name</td>
 				<td>Course Number</td>
 				<td>Course Level</td>
-
+				<td>Prerequisites</td>
 				<td>&nbsp;</td>
 
 			</tr>
@@ -96,6 +75,26 @@ body {
 					<td>${course.courseNumber}</td>
 
 					<td>${course.courseLevel}</td>
+					<td>
+					<c:choose>
+						<c:when test="${course.prerequisite ==3 }">
+							SWE
+						</c:when>
+						<c:when test="${course.prerequisite ==15}">
+							DBMS
+						</c:when>
+						<c:when test="${course.prerequisite ==1 }">
+							FPP
+						</c:when>
+						<c:when test="${course.prerequisite ==2 }">
+							MPP
+						</c:when>
+						<c:when test="${course.prerequisite ==5}">
+							WAP
+						</c:when>
+					</c:choose>
+					</td>
+					
 
 
 					<td><a

@@ -83,21 +83,28 @@ body {
 					<td>${course.courseNumber}</td>
 
 					<td>${course.courseLevel}</td>
-
-					<td><a
-						href="<spring:url value="/course/edit/${course.courseId}"/>">Edit</a>
-						| <a
-						href="<spring:url value="/course/delete/${course.courseId}"/>">Delete</a></td>
-
-					<td>${course.courseLevel}</td>
-
-					<td>${course.prerequisite.courseName}</td>
-
-					<td><a
-						href="<spring:url value="/course/edit/${course.courseId}"/>">Edit</a>
-						| <a
-						href="<spring:url value="/course/delete/${course.courseId}"/>">Delete</a></td>
-
+					<td>
+					<c:choose>
+						<c:when test="${course.prerequisite ==3 }">
+							SWE
+						</c:when>
+						<c:when test="${course.prerequisite ==15}">
+							DBMS
+						</c:when>
+						<c:when test="${course.prerequisite ==1 }">
+							FPP
+						</c:when>
+						<c:when test="${course.prerequisite ==2 }">
+							MPP
+						</c:when>
+						<c:when test="${course.prerequisite ==5}">
+							WAP
+						</c:when>
+					</c:choose>
+					</td>
+					<td><a href="<spring:url value="/course/edit/${course.courseId}"/>">Edit</a> | 
+					<a href="<spring:url value="/course/delete/${course.courseId}"/>">Delete</a>
+					</td>
 				</tr>
 			</tbody>
 		</c:forEach>

@@ -1,6 +1,5 @@
 package org.mumsched.domain;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +17,6 @@ public class Entry {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long entryId;
 	
-	@Column(unique = true)
     @Size(min=2, max=10)
 	@NotEmpty(message="no empty field accepted")
 	private String entryName;

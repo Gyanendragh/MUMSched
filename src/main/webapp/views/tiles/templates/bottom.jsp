@@ -10,7 +10,7 @@
 <body>
 <br/>
 <div id="pagefooter" class="container">
-	<h3 align="right">Team</h3>
+	<h3 align="right">Rising Star</h3>
 	<table align="right">
 		
 		<tr><td>Gyanendra Ghimire</td></tr>
